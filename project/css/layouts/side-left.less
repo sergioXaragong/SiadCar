@@ -1,0 +1,85 @@
+.side-menu{
+	background-color: @color__base__500;
+	bottom: 0px;
+	color: @color__white;
+	height: 100%;
+	left: 0px;
+	padding: @padding*2 0px;
+	position: fixed;
+	top: @top-bar__height;
+	width: @side-menu__width;
+	a{
+		color: @color__white;
+		text-decoration: none;
+	}
+	.user__zone{
+		border-bottom: 1px solid @color__white;
+		padding-bottom: @padding*2;
+		text-align: center;
+		p{
+			line-height: 1em;
+			margin: @padding*.5 0px;
+		}
+		.user__image{
+			@this__dimentions: 100px;
+			height: @this__dimentions;
+			display: inline-block;
+			width: @this__dimentions;
+		}
+		.user__name{
+			font-size: 1.2em;
+		}
+		.user__rol{
+			font-size: .8em;
+		}
+	}
+	.menu{
+		padding: 0px;
+		padding-top: @padding*2;
+		li{
+			list-style: none;
+		}
+		.menu__item{
+			&.active{
+				background-color: @color__base__600;
+				.submenu{
+					display: block;
+				}
+			}
+			.item{
+				cursor: pointer;
+				flex-wrap: nowrap;
+				font-size: 1.1em;
+				padding: @padding @padding*2;
+				padding-right: @padding*1.5;
+				position: relative;
+				.item__icon{
+					margin-right: @padding;
+				}
+				.icon__small{
+					font-size: .85em;
+					margin-right: 0px;
+					position: absolute;
+					right: @padding*2;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+			&:not(.has__submenu){
+				.icon__small{
+					display: none;
+				}
+			}
+		}
+		.submenu{
+			background-color: darken(@color__base__500, 10%);
+			display: none;
+			padding-bottom: @padding*.5;
+			padding-top: @padding*.5;
+			a{
+				display: block;
+				padding: @padding*.5 0px;
+			}
+		}
+	}
+}

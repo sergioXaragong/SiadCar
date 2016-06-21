@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Siadcar</title>
+    <link href="vendor/normalize.css" rel="stylesheet"/>
+    <link href="vendor/flexboxgrid.min.css" rel="stylesheet"/>
+    <link href="css/main.css" rel="stylesheet"/>
+    <script src="vendor/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="top-bar">
+        <div class="row between-xs middle-xs">
+          <div class="top-bar__left container-content"><a href="index.html"><img src="images/logo__horizontal.png" alt="siadcar"/></a></div>
+          <div class="top-bar__right container-content">
+            <ul class="row middle-xs">
+              <li class="notifications"><a href="#"><i class="fa fa-bell"></i></a></li>
+              <li data-collapse="#collapse__go__profile" class="user__info show__collapse">
+                <div class="row middle-xs"><span style="background-image:url(images/test/profile.png)" alt="profile" class="user__image circle__image"></span>
+                  <p class="user__name">Henry Patarroyo</p>
+                </div>
+                <ul id="collapse__go__profile" class="collapse">
+                  <div class="user__zone"><span style="background-image:url(images/test/profile.png)" alt="profile" class="user__image circle__image"></span>
+                    <p class="user__name">Henry Patarroyo</p>
+                    <p class="user__date__add">25 nov. 2015</p>
+                  </div>
+                  <div class="links row middle-xs around-xs"><a href="#" class="btn">Perfil</a><a href="#" class="btn">Salir</a></div>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="side-menu">
+        <div class="container-content">
+          <div class="user__zone">
+            <div style="background-image:url(images/test/profile.png)" class="user__image circle__image"></div>
+            <p class="user__name">Henry Patarroyo</p>
+            <p class="user__rol">Administrador</p>
+          </div>
+        </div>
+        <ul class="menu">
+          <li class="menu__item active"><a href="#" class="item row middle-xs"><span class="item__icon"><i class="fa fa-home"></i></span><span>Dashboard</span></a></li>
+          <li class="menu__item has__submenu">
+            <p href="#" class="item row middle-xs"><span class="item__icon"><i class="fa fa-user"></i></span><span>Usuarios</span><span class="item__icon icon__small"><i class="fa fa-angle-down"></i></span></p>
+            <ul class="submenu">
+              <li><a href="#">Listar</a></li>
+              <li><a href="#">Agregar</a></li>
+            </ul>
+          </li>
+          <li class="menu__item has__submenu">
+            <p href="#" class="item row middle-xs"><span class="item__icon"><i class="fa fa-car"></i></span><span>Vehículos</span><span class="item__icon icon__small"><i class="fa fa-angle-down"></i></span></p>
+            <ul class="submenu">
+              <li><a href="#">Listar</a></li>
+              <li><a href="#">Agregar</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <section class="content__app">
+        <div class="content">
+          <header class="content__header">
+            <h1 class="header__title">Bienvenido</h1>
+            <h3 class="page__description">Usuarios registrados en el sistema.</h3>
+          </header>
+        </div>
+      </section>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

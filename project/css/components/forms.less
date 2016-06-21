@@ -1,0 +1,29 @@
+.form{
+	display: block;
+	width: 100%;
+	.form__section{
+		display: block;
+		margin: @padding*2 0px;
+		width: 100%;
+		&:first-child{
+			margin-top: 0px;
+		}
+	}
+	.form__label{
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 700;
+		margin-bottom: @padding*.5;
+	}
+	.form__input{
+		border: 1px solid @color__gray__400;
+		outline: none;
+		padding: @padding*.5 @padding;
+		width: 100%;
+	}
+	.form__check{
+		margin-right: @padding*.5;
+		height: 15px;
+		width: 15px;
+	}
+}

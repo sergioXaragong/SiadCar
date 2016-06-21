@@ -1,0 +1,40 @@
+.widget{
+	background-color: @color__white;
+	color: @color__black;
+	display: block;
+	margin: @padding 0px;
+	width: 100%;
+	.widget__header{
+		background-color: @color__base__500;
+		color: @color__white;
+		padding: @padding*.75 @padding;
+		h2,
+		.widget__title{
+			font-size: 1.4em;
+			font-weight: 400;
+			margin: 0px;
+		}
+	}
+	.widget__body{
+		p{
+			margin-top: 0px;
+		}
+		strong{
+			color: @color__base__500;
+		}
+		&.padding{
+			padding: @padding;
+		}
+	}
+
+	&.widget__transparent{
+		background-color: transparent;
+		color: @color__base__500;
+		.widget__header{
+			background-color: transparent;
+			border-bottom: 1px dashed @color__gray__500;
+			color: @color__black;
+			padding: @padding*.75 0px;
+		}
+	}
+}

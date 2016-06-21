@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>SiadCar</title>
+    <link href="vendor/normalize.css" rel="stylesheet"/>
+    <link href="vendor/flexboxgrid.min.css" rel="stylesheet"/>
+    <link href="css/main.css" rel="stylesheet"/>
+    <script src="vendor/jquery.min.js"></script>
+  </head>
+  <body>
+    <section class="content content__login">
+      <div class="row center-xs">
+        <div class="col-xs-12"><img src="images/logo.png" alt="SiadCar" class="logo"/></div>
+      </div>
+      <div class="limiter__content">
+        <h1 class="title__section">INICIAR SESIÓN</h1>
+        <div class="row">
+          <div class="col-xs-12">
+            <form action="index.html" method="GET" class="form">
+              <div class="form__section">
+                <input name="username" type="email" placeholder="Usuario" required="required" autocomplete="off" class="form__input"/>
+              </div>
+              <div class="form__section">
+                <input name="password" type="password" placeholder="Contraseña" required="required" class="form__input"/>
+              </div>
+              <div class="form__section">
+                <label class="fomr__label">
+                  <input name="rememberMe" type="checkbox" class="form__check"/>Recordarme
+                </label>
+              </div>
+              <div class="form__section">
+                <button type="submit" class="btn btn__long">Ingresar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row center-xs">
+          <div class="col-xs-12"><a href="login__restablecer-password.html">¿Olvidaste tu contraseña?</a></div>
+        </div>
+      </div>
+    </section>
+    <script src="js/main.js"></script>
+  </body>
+</html>

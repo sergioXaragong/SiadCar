@@ -1,0 +1,53 @@
+//
+// Variables
+// 
+
+@import url(fonts.less);
+@import url(palette.less);
+
+
+//
+// Typography
+//
+@font__text: 'glacial_indifference', sans-serif;
+@font__size: 15px;
+@font__color: @color__black;
+@font__weight: 300;
+
+
+//
+// Paths
+//
+@path__images: '../images';
+
+
+// Layouts
+@padding: 12px;
+
+
+// Components
+
+
+// Media Queries Breakpoints
+@screen-xs: 480px;
+@screen-sm: 768px;
+@screen-md: 992px;
+@screen-lg: 1150px;
+
+@screen-xs-max: (@screen-xs - 1);
+@screen-sm-max: (@screen-sm - 1);
+@screen-md-max: (@screen-md - 1);
+
+
+
+.responsive(@maxWidth; @rules) {
+    @media only screen and (max-width: @maxWidth) {
+        @rules();
+    }
+}
+/**** RETINA ****/
+.retina(@rules){
+	@media only screen and (-webkit-min-device-pixel-ratio: 2){
+		@rules();
+	}
+}

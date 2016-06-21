@@ -1,0 +1,7 @@
+#################
+## SiadCar
+#################
+
+design/**/*
+template/bower_components/**/*
+template/node_modules/**/*

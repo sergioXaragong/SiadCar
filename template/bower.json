@@ -1,0 +1,9 @@
+{
+  "name": "Siadcar",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "flexboxgrid": "~6.3.0",
+    "normalize-css": "normalize.css#~3.0.3"
+  }
+}

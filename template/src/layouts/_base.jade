@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="es")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible",content="IE=edge")
+		meta(name="viewport",content="width=device-width")
+		title Siadcar
+
+		link(href="vendor/normalize.css",rel="stylesheet")
+		link(href="vendor/flexboxgrid.min.css",rel="stylesheet")
+
+		link(href="css/main.css",rel="stylesheet")
+
+		script(src="vendor/jquery.min.js")
+	body
+		#wrapper
+			include __header
+
+			include __side__left
+
+			section.content__app
+				.content
+					block content
+		
+		script(src="js/main.js")

@@ -1,0 +1,37 @@
+.side-menu
+	.container-content
+		.user__zone
+			.user__image.circle__image(style="background-image:url(images/test/profile.png)")
+			p.user__name Henry Patarroyo
+			p.user__rol Administrador
+
+	ul.menu
+		li.menu__item.active
+			a.item.row.middle-xs(href="#")
+				span.item__icon
+					i.fa.fa-home
+				span Dashboard
+		li.menu__item.has__submenu
+			p.item.row.middle-xs(href="#")
+				span.item__icon
+					i.fa.fa-user
+				span Usuarios
+				span.item__icon.icon__small
+					i.fa.fa-angle-down
+			ul.submenu
+				li
+					a(href="#") Listar
+				li
+					a(href="#") Agregar
+		li.menu__item.has__submenu
+			p.item.row.middle-xs(href="#")
+				span.item__icon
+					i.fa.fa-car
+				span Vehículos
+				span.item__icon.icon__small
+					i.fa.fa-angle-down
+			ul.submenu
+				li
+					a(href="#") Listar
+				li
+					a(href="#") Agregar

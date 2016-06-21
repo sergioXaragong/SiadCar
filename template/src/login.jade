@@ -1,0 +1,22 @@
+extends layouts/_login
+
+block content
+	.limiter__content
+		h1.title__section INICIAR SESIÓN
+		.row
+			.col-xs-12
+				form.form(action="index.html" method="GET")
+					.form__section
+						input.form__input(name="username", type="email", placeholder="Usuario", required, autocomplete="off")
+					.form__section
+						input.form__input(name="password", type="password", placeholder="Contraseña", required)
+					.form__section
+						label.fomr__label
+							input.form__check(name="rememberMe", type="checkbox")
+							| Recordarme
+					.form__section
+						button.btn.btn__long(type="submit") Ingresar
+
+		.row.center-xs
+			.col-xs-12
+				a(href="login__restablecer-password.html") ¿Olvidaste tu contraseña?

@@ -1,0 +1,44 @@
+.collapse{
+	display: none;
+	position: absolute;
+	top: 100%;
+	z-index: 5;
+	&.active{
+		display: block;
+	}
+}
+
+#collapse__go__profile{
+	background-color: @color__base__500;
+	border: 1px solid @color__white;
+	color: @color__white;
+	padding: 0px;
+	text-align: center;
+	width: 210px;
+	.user__zone{
+		padding: @padding;
+		p{
+			line-height: 1em;
+			margin: @padding*.25 0px;
+		}
+		.user__image{
+			@this__dimentions: 50px;
+			display: inline-block;
+			height: @this__dimentions;
+			margin-bottom: @padding;
+			width: @this__dimentions;
+		}
+		.user__date__add{
+			font-size: .8em;
+		}
+	}
+	.links{
+		background-color: @color__base__600;
+		border-top: 1px solid @color__white;
+		font-size: .8em;
+		padding: @padding;
+		.btn{
+			padding: @padding*.25 @padding*1.5;
+		}
+	}
+}

@@ -1,0 +1,22 @@
+#top-bar
+	.row.between-xs.middle-xs
+		.top-bar__left.container-content
+			a(href="index.html")
+				img(src="images/logo__horizontal.png", alt="siadcar")
+		.top-bar__right.container-content
+			ul.row.middle-xs
+				li.notifications
+					a(href="#")
+						i.fa.fa-bell
+				li.user__info.show__collapse(data-collapse="#collapse__go__profile")
+					.row.middle-xs
+						span.user__image.circle__image(style="background-image:url(images/test/profile.png)", alt="profile")
+						p.user__name Henry Patarroyo
+					ul#collapse__go__profile.collapse
+						.user__zone
+							span.user__image.circle__image(style="background-image:url(images/test/profile.png)", alt="profile")
+							p.user__name Henry Patarroyo
+							p.user__date__add 25 nov. 2015
+						.links.row.middle-xs.around-xs
+							a.btn(href="#") Perfil
+							a.btn(href="#") Salir
