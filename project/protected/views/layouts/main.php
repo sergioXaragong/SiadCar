@@ -14,10 +14,13 @@
     
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet"/>
+
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/datatable/css/jquery.dataTables.min.css" rel="stylesheet"/>
     
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/notify/notify-metro.css" rel="stylesheet"/>
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/sweetalert/sweetalert.css" rel="stylesheet"/>
 
+    <!-- Styles SiadCar -->
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" rel="stylesheet"/>
     
   </head>
@@ -42,11 +45,15 @@
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/datatable/js/jquery.dataTables.min.js"></script>
+
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/notify/notify.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/notify/notify-metro.js"></script>
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/sweetalert/sweetalert.min.js"></script>
 
+    
+    <!-- Scripts SiadCar -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/apps.js"></script>
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>

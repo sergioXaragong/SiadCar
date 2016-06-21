@@ -1,3 +1,12 @@
+jQuery(document).ready(function($) {
+    $('.table__datatable').each(function(index, el) {
+        $(this).DataTable();
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+
 $.reload = function(){
     $('html, body').animate({
         scrollTop: 0
@@ -6,7 +15,6 @@ $.reload = function(){
         window.location.reload();
     }, 500);
 }
-
 
 
 $.showNotify = function($title, $text, $style, $position) {

@@ -24,6 +24,7 @@ class UsuariosController extends Controller{
 				'actions'=>array(
 					'create', 'create__ajax',
 					'admin',
+					'view',
 				),
 				'users'=>array('@'),
 				'expression'=>'Tools::hasPermission(1)',
@@ -135,5 +136,28 @@ class UsuariosController extends Controller{
 	/****** FIN CREACION DE USUARIOS *****/
 
 
-	
+	public function actionAdmin(){
+		$users = Usuarios::model()->findAll(array('condition'=>'t.estado != 2 AND t.id != '.Yii::app()->user->getState('_idUser')));
+
+		$this->render('admin', array(
+			'users'=>$users
+		));
+	}
+
+	public function actionView($id){
+		$user = $this->loadModel($id);
+
+		$this->render('view', array(
+			'user'=>$user
+		));
+	}
+
+
+	private function loadModel($id)
+	{
+		$model=Usuarios::model()->findByAttributes(array('id'=>$id), array('condition'=>'t.estado != 2'));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
 }

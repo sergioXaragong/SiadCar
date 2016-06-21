@@ -4,6 +4,8 @@
   "dependencies": {
     "jquery": "~2.2.0",
     "flexboxgrid": "~6.3.0",
-    "normalize-css": "normalize.css#~3.0.3"
+    "normalize-css": "normalize.css#~3.0.3",
+    "datatables.net": "^1.10.12",
+    "datatables.net-dt": "^1.10.12"
   }
 }

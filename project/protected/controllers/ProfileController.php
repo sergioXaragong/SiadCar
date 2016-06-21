@@ -34,7 +34,7 @@ class ProfileController extends Controller{
 
 	public function actionView(){
 		$user = Usuarios::model()->findByPk(Yii::app()->user->getState('_idUser'));
-		$this->render('view',array(
+		$this->render('//usuarios/view',array(
 			'user'=>$user
 		));
 	}

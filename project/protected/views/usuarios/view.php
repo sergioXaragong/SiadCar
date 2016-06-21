@@ -88,11 +88,14 @@
 								<p>**********</p>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<a href="#" class="btn">Modificar</a>
+
+						<?php if($user->id == Yii::app()->user->getState('_idUser')){ ?>
+							<div class="row">
+								<div class="col-xs-12">
+									<a href="#" class="btn">Modificar</a>
+								</div>
 							</div>
-						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>

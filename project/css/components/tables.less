@@ -1,0 +1,26 @@
+.table{
+	thead, tfoot{
+		th, td{
+			color: @color__base__600;
+		}
+	}
+}
+.dataTables_wrapper{
+	.table__datatable{
+		thead{
+			th, td{
+				border-bottom: 1px solid @color__gray__500;
+			}
+		}
+		tfoot{
+			th, td{
+				border-top: 1px solid @color__gray__500;
+			}
+		}
+	}
+	.dataTables_paginate{
+		.paginate_button{
+			padding: @padding*.25 @padding;
+		}
+	}
+}
