@@ -43,6 +43,36 @@ jQuery(document).ready(function($) {
             );
         }
     });
+
+    $(document).on('click', '.link__confirm', function(event) {
+        event.preventDefault();
+        $('.notifyjs-metro-base .notify__hidden').each(function(index, el) {
+            $(this).trigger('notify-hide');
+        });
+
+        $link = $(this);
+        $('.notify__link__active').removeClass('notify__link__active');
+        $link.addClass('notify__link__active');
+
+        $.showConfirm($link.attr('data-cofirm__text'), $link.attr('href'), (($link.is('[data-confirm__class]'))?$link.attr('data-confirm__class'):''));
+    });
+
+    $(document).on('click', '.link__item-table__delete', function(event) {
+        event.preventDefault();
+        $link = $(this);
+        $callback = function($data){
+            if($data.status == 'success'){
+                $linkInit = $('.notify__link__active');
+                $dataTable = $linkInit.parents('table');
+
+                $linkInit.parents('tr').addClass('item__remove');
+                $dataTable.DataTable().row('.item__remove').remove().draw(false);
+            }
+
+            $.showNotify($data.title, $data.message, $data.status);
+        }
+        $.goLinkAjax($link, $callback);
+    });
 });
 
 
@@ -78,4 +108,23 @@ $.clearForm = function($form){
         $(this).val($option);
         $(this).change();
     });
+}
+
+$.goLinkAjax = function($link, $callback){
+    $.showLoading();
+
+    $.ajax({
+        url: $link.attr('href'),
+        type: 'GET',
+        dataType: 'json',
+        data: {},
+    })
+    .done($callback)
+    .fail(function() {
+        $.showNotify('Error', 'Ocurrio un error durante la conexión con el servidor. Intente mas tarde!!!', 'error');
+    })
+    .always(function() {
+        $.hiddenLoading();
+    });
+    
 }

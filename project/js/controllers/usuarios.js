@@ -46,7 +46,8 @@ jQuery(document).ready(function($) {
 		$callback = function($data){
 			if($data.status == 'success'){
 				$.modalMessage($data.title, $data.message, $data.status, true);
-				$.clearForm($form);
+				if($form.hasClass('success__clear-form'))
+					$.clearForm($form);
 			}
 			else{
 				$.showNotify($data.title, $data.message, $data.status);
@@ -54,5 +55,19 @@ jQuery(document).ready(function($) {
 		}
 
 		$.sendFormAjax($form, $callback);
+	});
+
+	$(document).on('click', '.link__reset__pass', function(event) {
+		event.preventDefault();
+		$link = $(this);
+		$callback = function($data){
+			if($data.status == 'success'){
+				$.modalMessage($data.title, $data.message, $data.status, true);
+			}
+			else{
+				$.showNotify($data.title, $data.message, $data.status);
+			}
+		}
+		$.goLinkAjax($link, $callback);
 	});
 });

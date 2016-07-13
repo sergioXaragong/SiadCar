@@ -59,10 +59,10 @@
 				        			<td>
 				        				<div class="btn-group btn-group-xs">
 				        					<a href="<?php echo $this->createUrl('usuarios/'.$user->id) ?>" data-toggle="tooltip" title="Ver" class="btn btn-primary"><i class="fa fa-external-link"></i></a>
-				        					<a href="<?php echo $this->createUrl('usuarios/reset_password/'.$user->id) ?>" data-toggle="tooltip" title="Reset password" class="btn btn-primary link__confirm" data-cofirm__text="Se generara una nueva contraseña para el usuario <?php echo $user->nombres; ?>. Desea continuar con el proceso?" data-confirm__class="link__ajax"><i class="fa fa-refresh"></i></a>
+				        					<a href="<?php echo $this->createUrl('usuarios/reset_password/'.$user->id) ?>" data-toggle="tooltip" title="Reset password" class="btn btn-primary link__confirm" data-cofirm__text="Se generara una nueva contraseña para el usuario <?php echo $user->nombres; ?>. Desea continuar con el proceso?" data-confirm__class="link__reset__pass"><i class="fa fa-refresh"></i></a>
 				        					<?php if($user->rol != 1 || Yii::app()->user->getState('_rolUser') == 1){ ?>
 												<a href="<?php echo $this->createUrl('usuarios/update/'.$user->id); ?>" data-toggle="tooltip" title="Editar" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-												<a href="<?php echo $this->createUrl('usuarios/delete_user/'.$user->id); ?>" data-toggle="tooltip" title="Eliminar" class="btn btn-primary link__confirm" data-cofirm__text="El usuario <?php echo $user->nombres; ?> sera eliminado del sistema, una vez realizado el proceso no podra revertir los cambios. Desea continuar con el proceso?" data-confirm__class="link__ajax" data-link__success="$.removeItem('#<?php echo $itemID; ?>');"><i class="fa fa-power-off"></i></a>
+												<a href="<?php echo $this->createUrl('usuarios/delete_user/'.$user->id); ?>" data-toggle="tooltip" title="Eliminar" class="btn btn-primary link__confirm" data-cofirm__text="El usuario <?php echo $user->nombres; ?> sera eliminado del sistema, una vez realizado el proceso no podra revertir los cambios. Desea continuar con el proceso?" data-confirm__class="link__item-table__delete"><i class="fa fa-power-off"></i></a>
 											<?php } ?>
 				        				</div>
 				        			</td>

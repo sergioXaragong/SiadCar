@@ -3,7 +3,7 @@
 	'action'=>($model->isNewRecord)?$this->createUrl('usuarios/create__ajax'):$this->createUrl('usuarios/update__ajax/'.$model->id),
 	'enableAjaxValidation'=>false,
 	'htmlOptions'=>array(
-		'class'=>'form',
+		'class'=>'form '.(($model->isNewRecord)?'success__clear-form':''),
 		'role'=>'form',
 		'method'=>'post',
 	),

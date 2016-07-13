@@ -668,3 +668,90 @@ Stack trace:
 REQUEST_URI=/universidad/sw/siadcar/project/images/users/defaul.png
 HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/usuarios/3
 ---
+2016/06/30 00:38:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "reset_password".' in C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(270): CController->missingAction('reset_password')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('reset_password')
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('usuarios/reset_...')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/usuarios/reset_password/3
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/usuarios/admin
+---
+2016/06/30 00:39:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "reset_password".' in C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(270): CController->missingAction('reset_password')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('reset_password')
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('usuarios/reset_...')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/usuarios/reset_password/3
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/usuarios/admin
+---
+2016/06/30 02:16:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "reset_password".' in C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(270): CController->missingAction('reset_password')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('reset_password')
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('usuarios/reset_...')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/usuarios/reset_password/3
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/usuarios/admin
+---
+2016/06/30 02:16:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "reset_password".' in C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(270): CController->missingAction('reset_password')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('reset_password')
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('usuarios/reset_...')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/usuarios/reset_password/5
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/usuarios/admin
+---
+2016/06/30 02:16:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "update".' in C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(270): CController->missingAction('update')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('update')
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('usuarios/update')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/usuarios/update/3
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/usuarios/admin
+---
+2016/07/13 01:14:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "reset_password".' in C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(270): CController->missingAction('reset_password')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('reset_password')
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('usuarios/reset_...')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/usuarios/reset_password/3
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/usuarios/admin
+---
+2016/07/13 01:54:43 [error] [php] Array to string conversion (C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\UsuariosController.php:178)
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): UsuariosController->runAction()
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): UsuariosController->filterAccessControl()
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): UsuariosController->runActionWithFilters()
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): UsuariosController->run()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CWebApplication->run()
+REQUEST_URI=/universidad/sw/siadcar/project/usuarios/reset_password/5
+in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\UsuariosController.php (178)
+in C:\wamp\www\universidad\sw\siadcar\project\index.php (13)
+2016/07/13 02:18:48 [warning] [application] Failed to set unsafe attribute "permissions" of "Usuarios".
+in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\UsuariosController.php (228)
+in C:\wamp\www\universidad\sw\siadcar\project\index.php (13)

@@ -4,6 +4,10 @@ jQuery(document).ready(function($) {
     });
 
     $('[data-toggle="tooltip"]').tooltip();
+
+    $(document).on('click', '.notifyjs-metro-base .notify__hidden', function() {
+        $(this).trigger('notify-hide');
+    });
 });
 
 
@@ -45,14 +49,14 @@ $.showNotify = function($title, $text, $style, $position) {
         clickToHide: true
     });
 }
-$.showConfirm = function($text, $link, $link__class, $link__success){
+$.showConfirm = function($text, $link, $link__class){
     $.notify({
         title: 'Esta seguro?',
-        text: $text+'<div class="clearfix"></div><br><a href="'+$link+'" data-link__success="'+$link__success+'" class="btn btn-sm btn-default confirm__hidden '+$link__class+'">Si</a> <a class="btn btn-sm btn-danger confirm__hidden">No</a>',
+        text: $text+'<div class="clearfix"></div><br><a href="'+$link+'" class="btn btn-sm btn-default notify__hidden '+$link__class+'">Si</a> <a class="btn btn-sm btn-danger notify__hidden">No</a>',
         image: "<i class='fa fa-warning'></i>"
     }, {
         style: 'metro',
-        className: "cool",
+        className: "warning",
         showAnimation: "show",
         showDuration: 0,
         hideDuration: 0,

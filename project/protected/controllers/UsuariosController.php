@@ -25,6 +25,9 @@ class UsuariosController extends Controller{
 					'create', 'create__ajax',
 					'admin',
 					'view',
+					'reset_password',
+					'update', 'update__ajax',
+					'delete_user'
 				),
 				'users'=>array('@'),
 				'expression'=>'Tools::hasPermission(1)',
@@ -135,8 +138,10 @@ class UsuariosController extends Controller{
 	}
 	/****** FIN CREACION DE USUARIOS *****/
 
-
 	public function actionAdmin(){
+		$load = Yii::app()->getClientScript();
+		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/controllers/usuarios.js',CClientScript::POS_END);
+
 		$users = Usuarios::model()->findAll(array('condition'=>'t.estado != 2 AND t.id != '.Yii::app()->user->getState('_idUser')));
 
 		$this->render('admin', array(
@@ -152,6 +157,138 @@ class UsuariosController extends Controller{
 		));
 	}
 
+	public function actionReset_password($id){
+		if(Yii::app()->getRequest()->getIsAjaxRequest()){
+			$response = array('status'=>'error');
+
+			$model = $this->loadModel($id);
+			$passDefault = 'siadcar_'.rand(100, 1000);
+			$model->password = Tools::crypt($passDefault);
+
+			if($model->save()){
+				$response['title'] = 'Echo';
+            	$response['message'] = 'Al usuario '.$model->nombres.' se le cambio la contraseña con exito. Estos son sus datos de acceso. <br> <p><strong>Usuario:</strong> '.$model->cedula.'</p><p><strong>Password:</strong> '.$passDefault.'</p>';
+            	$response['status'] = 'success';
+			}
+			else{
+				$response['title'] = 'Error en la operacón';
+            	$response['message'] = 'Ocurrio un error durante el proceso de asignar una nueva contraseña. Informe al desarrollador e intente mas tarde.';
+			}
+
+			echo CJSON::encode($response);
+		}
+		else
+            throw new CHttpException(404,'The requested page does not exist.');
+	}
+
+	/********* MODIFICACION USUARIOS *********/
+	public function actionUpdate($id){
+		$load = Yii::app()->getClientScript();
+		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/controllers/usuarios.js',CClientScript::POS_END);
+
+
+		$model = $this->loadModel($id);
+
+		$rols = RolsUsuario::model()->findAll();
+		$permissions = Permisos::model()->findAll(array('order'=>'t.nombre ASC'));
+
+		$this->render('update',array(
+			'model'=>$model,
+
+			'rols'=>$rols,
+			'permissions'=>$permissions,
+
+			'rolsList'=>Tools::toListSelect($rols, 'id', 'nombre'),
+		));
+	}
+	public function actionUpdate__ajax($id){
+		if(Yii::app()->getRequest()->getIsAjaxRequest() && isset($_POST['Usuarios'])){
+			$response = array('status'=>'error');
+			$error = false;
+
+			$model = $this->loadModel($id);
+
+			$validator = new CEmailValidator;
+			$email = $_POST['Usuarios']['email'];
+
+			if($validator->validateValue($email)){
+				$cedula = $_POST['Usuarios']['cedula'];
+				$user = Usuarios::model()->findByAttributes(array('cedula'=>$cedula), array('condition'=>'t.id != '.$model->id));
+				if($user != null){
+					$error = true;
+					$response['title'] = 'Error validación';
+            		$response['message'] = 'El documento de identificación ya se encuentra registrado por otro usuario. Por favor verifique los datos e intente de nuevo.';
+            	}
+			}
+			else{
+				$error = true;
+				$response['title'] = 'Error validación';
+        		$response['message'] = 'El correo electronico ingresado no es valido. Por favor verifique los datos e intente de nuevo.';
+			}
+			if(!$error){
+				$model->attributes=$_POST['Usuarios'];
+	            $rol = RolsUsuario::model()->findByPk($_POST['Usuarios']['rol']);
+	            if($rol != null){
+		            if(isset($_POST['Usuarios']['permissions'])){
+		            	$permissions = CJSON::decode($rol->permisos);
+		            	foreach ($_POST['Usuarios']['permissions'] as $key => $permissionIn) {
+		            		$permission = Permisos::model()->findByPk($permissionIn);
+		            		if($permission != null){
+		            			if(!in_array($permissionIn,$permissions,false))
+		            				$permissions[] = $permissionIn;
+		            		}
+		            	}
+		            	$rol->permisos = CJSON::encode($permissions);
+		            }
+		            $model->permisos = $rol->permisos;
+		            
+		            if($model->validate(null, false)){
+		            	$model->save();
+
+		            	$response['title'] = 'Echo';
+		            	$response['message'] = 'Los datos del usuario '.$model->nombres.' se modificaron con exito.';
+		            	$response['status'] = 'success';
+		            }
+		            else{
+		            	$response['title'] = 'Error validación';
+		            	$response['message'] = $model->getErrors();
+		            }
+	            }
+	            else{
+	            	$error = true;
+					$response['title'] = 'Error validación';
+	        		$response['message'] = 'Los datos de roll no muestran coincidencia en nuestro sistema. Por favor, verifique los datos e intente de nuevo.';
+	            }
+	        }
+
+			echo CJSON::encode($response);
+		}
+		else
+            throw new CHttpException(404,'The requested page does not exist.');			
+	}
+	/********* FIN MODIFICACION USUARIOS *********/
+
+	public function actionDelete_user($id){
+		if(Yii::app()->getRequest()->getIsAjaxRequest()){
+			$response = array('status'=>'error');
+
+			$model = $this->loadModel($id);
+			$model->estado = 2;
+			if($model->save()){
+				$response['status'] = 'success';
+				$response['title'] = 'Echo';
+				$response['message'] = 'El usuario se a eliminado del sistema.';
+			}
+			else{
+				$response['title'] = 'Error';
+				$response['message'] = 'Ocurrio un error durante el proceso. Informe al desarrollor e intente mas tarde.';
+			}
+
+			echo CJSON::encode($response);
+		}
+		else
+			throw new CHttpException(404,'The requested page does not exist.');	
+	}
 
 	private function loadModel($id)
 	{
