@@ -19,6 +19,7 @@
 				            	<th>No.</th>
 				                <th>Nombre</th>
 				                <th>Apellido</th>
+				                <th>Cédula</th>
 				                <th>Celular</th>
 				                <th>Email</th>
 				                <th>Fecha Creación</th>
@@ -31,6 +32,7 @@
 				            	<th>No.</th>
 				                <th>Nombre</th>
 				                <th>Apellido</th>
+				                <th>Cédula</th>
 				                <th>Celular</th>
 				                <th>Email</th>
 				                <th>Fecha Creación</th>
@@ -47,6 +49,7 @@
 				        			<td><?php echo $key+1; ?></td>
 				        			<td><?php echo $user->nombres; ?></td>
 				        			<td><?php echo $user->apellidos; ?></td>
+				        			<td><?php echo $user->cedula; ?></td>
 				        			<td><?php echo $client->celular; ?></td>
 				        			<td><?php echo $user->email; ?></td>
 				        			<td><?php echo $user->fecha_creacion; ?></td>

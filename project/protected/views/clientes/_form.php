@@ -107,7 +107,7 @@
 				<div class="widget__body padding">
 					<div class="row">
 						<div class="col-xs-12">
-							<?php echo $form->textArea($modelClient,'observaciones',array('class'=>'summernote form__input','placeholder'=>'Ninguna','rows'=>6)); ?>
+							<?php echo $form->textArea($modelClient,'observaciones',array('class'=>'form__input','placeholder'=>'Ninguna','rows'=>6)); ?>
 						</div>
 					</div>
 					<br>

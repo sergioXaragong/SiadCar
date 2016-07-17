@@ -26,6 +26,21 @@
           <?php } ?>
           
           
+          <?php if(Tools::hasPermission(3)){ ?>
+            <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'vehiculos')?'active':''; ?>">
+              <p class="item row middle-xs">
+                <span class="item__icon"><i class="fa fa-car"></i></span>
+                <span>Vehículos</span>
+                <span class="item__icon icon__small"><i class="fa fa-angle-down"></i></span>
+              </p>
+              <ul class="submenu">
+                <li><a href="<?php echo $this->createUrl('vehiculos/admin') ?>">Listar</a></li>
+                <li><a href="<?php echo $this->createUrl('vehiculos/create') ?>">Agregar</a></li>
+              </ul>
+            </li>
+          <?php } ?>
+          
+          
           <?php if(Tools::hasPermission(1)){ ?>
             <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'usuarios')?'active':''; ?>">
               <p class="item row middle-xs">

@@ -17,7 +17,7 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$user = Usuarios::model()->findByAttributes(array('cedula'=>$this->username,'estado'=>1), array('condition'=>'t.tipo != 4'));
+		$user = Usuarios::model()->findByAttributes(array('cedula'=>$this->username,'estado'=>1), array('condition'=>'t.rol != 4'));
 
 		if(!is_object($user))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;

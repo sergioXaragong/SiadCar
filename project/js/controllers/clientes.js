@@ -5,12 +5,13 @@ jQuery(document).ready(function($) {
 		$form = $(this);
 
 		$callback = function($data){
-			//$.showNotify($data.title, $data.message, $data.status);
-			$.modalMessage($data.title, $data.message, $data.status, true);
 			if($data.status == 'success'){
+				$.modalMessage($data.title, $data.message, $data.status, true);
 				if($form.hasClass('success__clear-form'))
 					$.clearForm($form);
 			}
+			else
+				$.showNotify($data.title, $data.message, $data.status);
 		}
 
 		$.sendFormAjax($form, $callback);

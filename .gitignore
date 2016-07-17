@@ -9,4 +9,7 @@ template/node_modules/**/*
 protected/runtime/*
 !protected/runtime/.gitignore
 protected/data/*.db
+
+assets/*
+assets/**/*
 themes/classic/views/
