@@ -39,7 +39,7 @@ class Tools extends CApplicationComponent{
 		$_items=array();
 		
 		if(count($models) > 0)
-			$_items[null] = '--- Seleccione una opción ---';
+			$_items[null] = '-- Seleccione una opción --';
 		else if(count($models) == 0)
 			$_items[null] = 'No hay disponibles';
 

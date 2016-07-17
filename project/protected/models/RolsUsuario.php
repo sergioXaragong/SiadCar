@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $nombre
  * @property string $permisos
+ * @property integer $system
  *
  * The followings are the available model relations:
  * @property Usuarios[] $usuarioses
@@ -30,11 +31,12 @@ class RolsUsuario extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nombre', 'required'),
+			array('system', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>155),
 			array('permisos', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nombre, permisos', 'safe', 'on'=>'search'),
+			array('id, nombre, permisos, system', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +61,7 @@ class RolsUsuario extends CActiveRecord
 			'id' => 'ID',
 			'nombre' => 'Nombre',
 			'permisos' => 'Permisos',
+			'system' => 'System',
 		);
 	}
 
@@ -83,6 +86,7 @@ class RolsUsuario extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nombre',$this->nombre,true);
 		$criteria->compare('permisos',$this->permisos,true);
+		$criteria->compare('system',$this->system);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

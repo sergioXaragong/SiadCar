@@ -20,6 +20,7 @@
  * @property integer $estado
  *
  * The followings are the available model relations:
+ * @property Clientes[] $clientes
  * @property RolsUsuario $rol0
  */
 class Usuarios extends CActiveRecord
@@ -40,7 +41,7 @@ class Usuarios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cedula, password, nombres, apellidos, telefono, rol, fecha_creacion, fecha_sesion_actual, fecha_ultima_sesion', 'required'),
+			array('cedula, password, nombres, apellidos, rol, fecha_creacion, fecha_sesion_actual, fecha_ultima_sesion', 'required'),
 			array('rol, estado', 'numerical', 'integerOnly'=>true),
 			array('cedula', 'length', 'max'=>45),
 			array('password, nombres, apellidos, image', 'length', 'max'=>155),
@@ -60,6 +61,7 @@ class Usuarios extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'clientes' => array(self::HAS_MANY, 'Clientes', 'usuario'),
 			'rol0' => array(self::BELONGS_TO, 'RolsUsuario', 'rol'),
 		);
 	}

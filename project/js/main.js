@@ -27,6 +27,19 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $('.select__depend').each(function(index, el) {
+        $selectDepend = $(this);
+        $select = $($selectDepend.attr('data-select__depend'));
+
+        $select.on('change', function(event) {
+            event.preventDefault();
+            $.loadSelectAjax($select, $selectDepend);
+        });
+
+        if($selectDepend.val() != '')
+            $select.find('option[value='+$selectDepend.attr('data-select__option')+']').prop('selected', 'true');
+    });
+
 
 
     $(document).on('click', '*[data-modal]', function(event) {
@@ -127,4 +140,33 @@ $.goLinkAjax = function($link, $callback){
         $.hiddenLoading();
     });
     
+}
+
+$.loadSelectAjax = function($select, $selectDepend){
+    if($select.val() != ''){
+        $.showLoading();
+
+        $.ajax({
+            url: $select.attr('data-select__load'),
+            type: 'GET',
+            dataType: 'json',
+            data: {id: $select.val()},
+        })
+        .done(function($data) {
+            if($data.status){
+                $selectDepend.html($data.items);
+                $selectDepend.prop('disabled', false);
+            }
+        })
+        .fail(function() {
+            $.showNotify('Error', 'Ocurrio un error durante la conexión con el servidor. Intente mas tarde!!!', 'error');
+        })
+        .always(function() {
+            $.hiddenLoading();
+        });
+    }
+    else{
+        $selectDepend.html('<option value="">-- Seleccione una opción --</option>');
+        $selectDepend.prop('disabled', true);
+    }    
 }

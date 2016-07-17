@@ -11,6 +11,21 @@
           </li>
           
           
+          <?php if(Tools::hasPermission(2)){ ?>
+            <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'clientes')?'active':''; ?>">
+              <p class="item row middle-xs">
+                <span class="item__icon"><i class="fa fa-street-view"></i></span>
+                <span>Clientes</span>
+                <span class="item__icon icon__small"><i class="fa fa-angle-down"></i></span>
+              </p>
+              <ul class="submenu">
+                <li><a href="<?php echo $this->createUrl('clientes/admin') ?>">Listar</a></li>
+                <li><a href="<?php echo $this->createUrl('clientes/create') ?>">Agregar</a></li>
+              </ul>
+            </li>
+          <?php } ?>
+          
+          
           <?php if(Tools::hasPermission(1)){ ?>
             <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'usuarios')?'active':''; ?>">
               <p class="item row middle-xs">

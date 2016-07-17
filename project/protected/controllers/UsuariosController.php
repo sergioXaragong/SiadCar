@@ -48,7 +48,7 @@ class UsuariosController extends Controller{
 		$model = new Usuarios;
 		$rolDefault = RolsUsuario::model()->findByPk(3);
 
-		$rols = RolsUsuario::model()->findAll();
+		$rols = RolsUsuario::model()->findAllByAttributes(array('system'=>1));
 		$permissions = Permisos::model()->findAll(array('order'=>'t.nombre ASC'));
 
 		$model->rol = $rolDefault->id;
@@ -97,7 +97,8 @@ class UsuariosController extends Controller{
 	            $model->fecha_sesion_actual = $model->fecha_creacion;
 	            $model->fecha_ultima_sesion = $model->fecha_creacion;
 
-	            $rol = RolsUsuario::model()->findByPk($_POST['Usuarios']['rol']);
+	            //$rol = RolsUsuario::model()->findByPk($_POST['Usuarios']['rol']);
+	            $rol = RolsUsuario::model()->findByAttributes(array('id'=>$_POST['Usuarios']['rol'],'system'=>1));
 	            if($rol != null){
 		            if(isset($_POST['Usuarios']['permissions'])){
 		            	$permissions = CJSON::decode($rol->permisos);
@@ -142,7 +143,7 @@ class UsuariosController extends Controller{
 		$load = Yii::app()->getClientScript();
 		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/controllers/usuarios.js',CClientScript::POS_END);
 
-		$users = Usuarios::model()->findAll(array('condition'=>'t.estado != 2 AND t.id != '.Yii::app()->user->getState('_idUser')));
+		$users = Usuarios::model()->findAll(array('condition'=>'t.rol != 4 AND t.estado != 2 AND t.id != '.Yii::app()->user->getState('_idUser')));
 
 		$this->render('admin', array(
 			'users'=>$users
@@ -189,7 +190,7 @@ class UsuariosController extends Controller{
 
 		$model = $this->loadModel($id);
 
-		$rols = RolsUsuario::model()->findAll();
+		$rols = RolsUsuario::model()->findAllByAttributes(array('system'=>1));
 		$permissions = Permisos::model()->findAll(array('order'=>'t.nombre ASC'));
 
 		$this->render('update',array(
@@ -227,7 +228,8 @@ class UsuariosController extends Controller{
 			}
 			if(!$error){
 				$model->attributes=$_POST['Usuarios'];
-	            $rol = RolsUsuario::model()->findByPk($_POST['Usuarios']['rol']);
+	            //$rol = RolsUsuario::model()->findByPk($_POST['Usuarios']['rol']);
+	            $rol = RolsUsuario::model()->findByAttributes(array('id'=>$_POST['Usuarios']['rol'],'system'=>1));
 	            if($rol != null){
 		            if(isset($_POST['Usuarios']['permissions'])){
 		            	$permissions = CJSON::decode($rol->permisos);
@@ -292,7 +294,7 @@ class UsuariosController extends Controller{
 
 	private function loadModel($id)
 	{
-		$model=Usuarios::model()->findByAttributes(array('id'=>$id), array('condition'=>'t.estado != 2'));
+		$model=Usuarios::model()->findByAttributes(array('id'=>$id), array('condition'=>'t.rol != 4 AND t.estado != 2'));
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
