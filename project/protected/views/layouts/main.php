@@ -53,6 +53,9 @@
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/sweetalert/sweetalert.min.js"></script>
 
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/ckeditor/ckeditor.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/ckeditor/config.js"></script>
+
     
     <!-- Scripts SiadCar -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/apps.js"></script>

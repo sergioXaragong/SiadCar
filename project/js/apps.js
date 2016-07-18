@@ -49,14 +49,28 @@ $.showNotify = function($title, $text, $style, $position) {
         clickToHide: true
     });
 }
-$.showConfirm = function($text, $link, $link__class){
+$.showConfirm = function($text, $link, $link__class, $style){
+    $style || ( $style = 'warning' );
+
+    if($style == "error"){
+        $icon = "fa fa-exclamation";
+    }else if($style == "warning"){
+        $icon = "fa fa-warning";
+    }else if($style == "success"){
+        $icon = "fa fa-check";
+    }else if($style == "info"){
+        $icon = "fa fa-question";
+    }else{
+        $icon = "fa fa-circle-o";
+    }
+
     $.notify({
         title: 'Esta seguro?',
         text: $text+'<div class="clearfix"></div><br><a href="'+$link+'" class="btn btn-sm btn-default notify__hidden '+$link__class+'">Si</a> <a class="btn btn-sm btn-danger notify__hidden">No</a>',
-        image: "<i class='fa fa-warning'></i>"
+        image: "<i class='"+$icon+"'></i>"
     }, {
         style: 'metro',
-        className: "warning",
+        className: $style,
         showAnimation: "show",
         showDuration: 0,
         hideDuration: 0,

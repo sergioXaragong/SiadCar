@@ -39,6 +39,21 @@
               </ul>
             </li>
           <?php } ?>
+
+
+          <?php if(Tools::hasPermission(4)){ ?>
+            <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'ingresos')?'active':''; ?>">
+              <p class="item row middle-xs">
+                <span class="item__icon"><i class="fa fa-sign-in"></i></span>
+                <span>Ingreso de Vehículos</span>
+                <span class="item__icon icon__small"><i class="fa fa-angle-down"></i></span>
+              </p>
+              <ul class="submenu">
+                <li><a href="<?php echo $this->createUrl('ingresos/admin') ?>">Listar</a></li>
+                <li><a href="<?php echo $this->createUrl('ingresos/create') ?>">Agregar</a></li>
+              </ul>
+            </li>
+          <?php } ?>
           
           
           <?php if(Tools::hasPermission(1)){ ?>

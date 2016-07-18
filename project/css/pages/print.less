@@ -1,0 +1,116 @@
+.page__print{
+	background-color: @color__white;
+	padding: @padding*5 @padding*3;
+	width: 100%;
+	table{
+		width: 100%;
+		td{
+			padding: 0px @padding*.5;
+		}
+	}
+	.print__head{
+		td{
+			vertical-align: top;
+		}
+	}
+	.print__logo{
+		width: 150px;
+		img{
+			height: auto;
+			width: 100%;
+		}
+	}
+	.print__info__company{
+		p{
+			font-size: 14px;
+			line-height: 1.2em;
+			padding-left: @padding;
+			margin: 0px;
+		}
+	}
+	.print__title{
+		text-align: right;
+		.title{
+			display: block;
+			font-size: 23px;
+			margin: 0px;
+			width: 100%;
+		}
+	}
+	.print__number{
+		font-size: 20px;
+		margin: 0px;
+	}
+	.print__zone{
+		border: 1px solid @color__gray__400;
+		margin: @padding*2 0px;
+		input{
+			background-color: @color__white;
+			border: 1px solid @color__gray__400;
+			padding: @padding*.25 @padding*.5;
+			width: 100%;
+		}
+		p{
+			margin: 0px;
+		}
+		table{
+			margin: @padding 0px;
+		}
+		.zone__header{
+			background-color: @color__gray__400;
+			padding: @padding*.5 @padding;
+			h2{
+				font-size: 18px;
+				margin: 0px;
+			}
+		}
+		.zone__body{
+			padding: @padding;
+			.area__text{
+				border: 1px solid @color__gray__400;
+				min-height: 70px;
+				padding: @padding*.25 @padding*.5;
+			}
+		}
+	}
+	.print__footer{
+		td{
+			height: 110px;
+			vertical-align: bottom;
+		}
+		p{
+			margin: 0px;
+		}
+		.page__firma{
+			text-align: center;
+			width: 300px;
+			hr{
+				border-color: @color__gray__600;
+				margin-bottom: 0px;
+			}
+		}
+	}
+}
+
+@media print {
+	@page {
+		size: A4 landscape; 
+	}
+
+
+	#top-bar{
+		display: none;
+	}
+	.side-menu{
+		display: none;
+	}
+	.content__app{
+		margin-left: 0px;
+	}
+	.run__print__page{
+		display: none;
+	}
+	.page__print{
+		padding: 0px @padding*3;
+	}
+}

@@ -26,7 +26,9 @@ class VehiculosController extends Controller{
 					'admin',
 					'view',
 					'update','update__ajax',
-					'delete_vehiculo'
+					'delete_vehiculo',
+
+					'get_info'
 				),
 				'users'=>array('@'),
 			),
@@ -190,6 +192,12 @@ class VehiculosController extends Controller{
 			$vehiculo->propietario = $cliente->id;
 			$vehiculo->attributes=$postVehiculos;
 
+			$existVehiculo = Vehiculos::model()->findByAttributes(array('placas'=>$vehiculo->placas));
+			if($existVehiculo != null){
+				$error = true;
+				$response['title'] = 'Error validación';
+        		$response['message'] = 'Ya existe un vehiculo registrado con estas placas. Por favor, verifique los datos e intente de nuevo.';
+			}
 			$tipo = TiposVehiculo::model()->findByPk($vehiculo->tipo);
 			if($tipo == null){
 				$error = true;
@@ -197,13 +205,13 @@ class VehiculosController extends Controller{
         		$response['message'] = 'Los datos de tipo de vehiculo no muestran coincidencia en nuestro sistema. Por favor, verifique los datos e intente de nuevo.';
 			}
 			$marca = MarcasVehiculo::model()->findByPk($vehiculo->marca);
-			if($tipo == null){
+			if($marca == null){
 				$error = true;
 				$response['title'] = 'Error validación';
         		$response['message'] = 'Los datos de marca no muestran coincidencia en nuestro sistema. Por favor, verifique los datos e intente de nuevo.';
 			}
 			$combustible = TiposCombustible::model()->findByPk($vehiculo->tipo_combustible);
-			if($tipo == null){
+			if($combustible == null){
 				$error = true;
 				$response['title'] = 'Error validación';
         		$response['message'] = 'Los datos de tipo de combustible no muestran coincidencia en nuestro sistema. Por favor, verifique los datos e intente de nuevo.';
@@ -227,6 +235,38 @@ class VehiculosController extends Controller{
 		}
 
 		return $response;
+	}
+
+	public function actionGet_info(){
+		if(isset($_GET['placa']) && $_GET['placa'] != ''){
+			$response = array('status'=>'error');
+			$placa = $_GET['placa'];
+
+			$vehiculo = Vehiculos::model()->findByAttributes(array('placas'=>$placa, 'estado'=>1));
+			if($vehiculo != null){
+				$response['status'] = 'success';
+				$response['vehiculo'] = array(
+					'id'=>$vehiculo->id,
+					'tipo'=>$vehiculo->tipo0->nombre,
+					'marca'=>$vehiculo->marca0->nombre,
+					'referencia'=>$vehiculo->referencia,
+					'modelo'=>$vehiculo->modelo,
+					'placas'=>$vehiculo->placas,
+					'propietario'=>array(
+						'nombres'=>$vehiculo->propietario0->usuario0->nombres,
+						'apellidos'=>$vehiculo->propietario0->usuario0->apellidos,
+						'identificacion'=>$vehiculo->propietario0->usuario0->cedula
+					),
+				);
+
+				if(isset($_GET['template']))
+					$response['render'] = $this->renderPartial($_GET['template'], $response['vehiculo'], true);
+			}
+
+			echo CJSON::encode($response);
+		}
+		else
+			throw new CHttpException(404,'The requested page does not exist.');
 	}
 
 	private function loadModel($id)

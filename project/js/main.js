@@ -40,6 +40,11 @@ jQuery(document).ready(function($) {
             $select.find('option[value='+$selectDepend.attr('data-select__option')+']').prop('selected', 'true');
     });
 
+    $(document).on('click', '.run__print__page', function(event) {
+        event.preventDefault();
+        $.printPage();
+    });
+
 
 
     $(document).on('click', '*[data-modal]', function(event) {
@@ -169,4 +174,8 @@ $.loadSelectAjax = function($select, $selectDepend){
         $selectDepend.html('<option value="">-- Seleccione una opción --</option>');
         $selectDepend.prop('disabled', true);
     }    
+}
+
+$.printPage = function(){
+    window.print();
 }
