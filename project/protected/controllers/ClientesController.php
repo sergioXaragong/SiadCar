@@ -89,9 +89,13 @@ class ClientesController extends Controller{
 		$client = $this->loadModel($id);
 		$user = $client->usuario0;
 
+		$vehiculos = Vehiculos::model()->findAllByAttributes(array('propietario'=>$client->id), array('condition'=>'t.estado != 2'));
+
 		$this->render('view', array(
 			'client'=>$client,
-			'user'=>$user
+			'user'=>$user,
+
+			'vehiculos'=>$vehiculos
 		));
 	}
 

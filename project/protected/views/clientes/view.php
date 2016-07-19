@@ -76,6 +76,60 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="col-xs-12">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="widget">
+					<div class="widget__header">
+						<h2>Vehiculos</h2>
+					</div>
+					<div class="widget__body padding">
+						<div class="row">
+							<div class="col-xs-12">
+								<?php if(count($vehiculos) > 0){ ?>
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>No.</th>
+												<th>Tipo</th>
+												<th>Marca</th>
+												<th>Referencia</th>
+												<th>Modelo</th>
+												<th>Placas</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php foreach ($vehiculos as $key => $vehiculo) { ?>
+												<tr>
+													<td><?php echo $key+1; ?></td>
+													<td><?php echo $vehiculo->tipo0->nombre; ?></td>
+													<td><?php echo $vehiculo->marca0->nombre; ?></td>
+													<td><?php echo $vehiculo->referencia; ?></td>
+													<td><?php echo $vehiculo->modelo; ?></td>
+													<td><?php echo $vehiculo->placas; ?></td>
+													<td>
+														<div class="btn-group btn-group-xs">
+							        						<a href="<?php echo $this->createUrl('vehiculos/'.$vehiculo->id) ?>" data-toggle="tooltip" title="Ver" class="btn btn-primary"><i class="fa fa-external-link"></i></a>
+							        					</div>
+													</td>
+												</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								<?php }
+								else { ?>
+									<p><strong>Ningun vehiculo registrado.</strong></p>
+								<?php }?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12">
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="widget">
@@ -91,6 +145,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>		
 	</div>
 </div>

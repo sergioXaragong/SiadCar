@@ -107,3 +107,54 @@
 		</div>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="widget">
+			<div class="widget__header">
+				<h2>Registros de Ingreso</h2>
+			</div>
+			<div class="widget__body padding">
+				<div class="row">
+					<div class="col-xs-12">
+						<?php if(count($ingresos) > 0){ ?>
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>Tipo ingreso</th>
+										<th>Fecha</th>
+										<th>Observaciones cliente</th>
+										<th>Observaciones</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach ($ingresos as $key => $ingreso) {
+										$fechaIngreso = new DateTime($ingreso->fecha);
+									?>
+										<tr>
+											<td><?php echo $key+1; ?></td>
+											<td><?php echo $ingreso->tipo0->nombre; ?></td>
+											<td><?php echo $fechaIngreso->format('d \d\e F Y H:i:s'); ?></td>
+											<td><?php echo $ingreso->observaciones_cliente; ?></td>
+											<td><?php echo $ingreso->observaciones; ?></td>
+											<td>
+												<div class="btn-group btn-group-xs">
+					        						<a href="<?php echo $this->createUrl('ingresos/'.$vehiculo->id) ?>" data-toggle="tooltip" title="Ver" class="btn btn-primary"><i class="fa fa-external-link"></i></a>
+					        					</div>
+											</td>
+										</tr>
+									<?php } ?>
+								</tbody>
+							</table>
+						<?php }
+						else{ ?>
+							<p><strong>No existe ningun registro de ingreso.</strong></p>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

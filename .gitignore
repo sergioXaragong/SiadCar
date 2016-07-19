@@ -6,10 +6,11 @@ design/**/*
 template/bower_components/**/*
 template/node_modules/**/*
 
-protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
+project/protected/runtime/*
+project/protected/runtime/**/*
+project/!protected/runtime/.gitignore
+project/protected/data/*.db
 
-assets/*
-assets/**/*
-themes/classic/views/
+project/assets/*
+project/assets/**/*
+project/themes/classic/views/

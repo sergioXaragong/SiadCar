@@ -92,9 +92,13 @@ class VehiculosController extends Controller{
 		$vehiculo = $this->loadModel($id);
 		$user = $vehiculo->propietario0->usuario0;
 
+		$ingresos = RegistrosIngreso::model()->findAllByAttributes(array('vehiculo'=>$vehiculo->id), array('condition'=>'t.estado != 2'));
+
 		$this->render('view', array(
 			'vehiculo'=>$vehiculo,
-			'user'=>$user
+			'user'=>$user,
+
+			'ingresos'=>$ingresos
 		));
 	}
 
