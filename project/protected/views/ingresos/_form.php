@@ -19,16 +19,16 @@
 						<div class="col-sm-6 col-xs-12">
 							<div class="form__section">
 								<label class="form__label">Placas:</label>
-								<input type="text" name="Vehiculos[placas]" id="Vehiculos__placas" data-load__info="<?php echo $this->createUrl('vehiculos/get_info') ?>" class="form__input" required>
+								<input type="text" name="Vehiculos[placas]" id="Vehiculos__placas" data-load__info="<?php echo $this->createUrl('vehiculos/get_info') ?>" class="form__input" required <?php echo (isset($vehiculo))?'readonly disabled':''; ?> value="<?php echo (isset($vehiculo))?$model->vehiculo0->placas:''; ?>" >
 								<?php echo $form->hiddenField($model,'vehiculo',array('required'=>true)); ?>
 						  	</div>
-						  	<div id="ingresos__go__add">
+						  	<div id="ingresos__go__add" style="<?php echo (isset($vehiculo))?'display:none;':''; ?>">
 					  			<a class="btn" href="<?php echo $this->createUrl('vehiculos/create'); ?>">Agregar vehículo</a>
 						  	</div>
 						</div>
 					</div>
 					<div id="Vehiculos__info">
-						
+						<?php echo (isset($vehiculo))?$vehiculo:''; ?>
 					</div>
 				</div>
 			</div>

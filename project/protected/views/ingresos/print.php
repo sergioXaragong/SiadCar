@@ -29,15 +29,15 @@
 				<tr>
 					<td>
 						<p><strong>Nombres y apellidos</strong></p>
-						<p><input type="text" value="<?php echo $propietario->usuario0->nombres; ?> <?php echo $propietario->usuario0->apellidos; ?>"></p>
+						<p><input type="text" value="<?php echo $propietario->usuario0->nombres; ?> <?php echo $propietario->usuario0->apellidos; ?>" readonly></p>
 					</td>
 					<td>
 						<p><strong>Identificación</strong></p>
-						<p><input type="text" value="<?php echo $propietario->usuario0->cedula; ?>"></p>
+						<p><input type="text" value="<?php echo $propietario->usuario0->cedula; ?>" readonly></p>
 					</td>
 					<td>
 						<p><strong>Correo electrónico</strong></p>
-						<p><input type="text" value="<?php echo $propietario->usuario0->email; ?>"></p>
+						<p><input type="text" value="<?php echo $propietario->usuario0->email; ?>" readonly></p>
 					</td>
 				</tr>
 			</table>
@@ -45,19 +45,19 @@
 				<tr>
 					<td>
 						<p><strong>Ciudad</strong></p>
-						<p><input type="text" value="<?php echo $propietario->ciudad0->nombre; ?> <?php echo $propietario->ciudad0->depende0->nombre; ?>"></p>
+						<p><input type="text" value="<?php echo $propietario->ciudad0->nombre; ?> <?php echo $propietario->ciudad0->depende0->nombre; ?>" readonly></p>
 					</td>
 					<td>
 						<p><strong>Dirección</strong></p>
-						<p><input type="text" value="<?php echo $propietario->direccion; ?>"></p>
+						<p><input type="text" value="<?php echo $propietario->direccion; ?>" readonly></p>
 					</td>
 					<td>
 						<p><strong>Teléfono</strong></p>
-						<p><input type="text" value="<?php echo $propietario->usuario0->telefono; ?>"></p>
+						<p><input type="text" value="<?php echo $propietario->usuario0->telefono; ?>" readonly></p>
 					</td>
 					<td>
 						<p><strong>Celular</strong></p>
-						<p><input type="text" value="<?php echo $propietario->celular; ?>"></p>
+						<p><input type="text" value="<?php echo $propietario->celular; ?>" readonly></p>
 					</td>
 				</tr>
 			</table>
@@ -72,12 +72,12 @@
 				<tr>
 					<td>
 						<p><strong>Tipo de mantenimiento</strong></p>
-						<p><input type="text" value="<?php echo $model->tipo0->nombre; ?>"></p>
+						<p><input type="text" value="<?php echo $model->tipo0->nombre; ?>" readonly></p>
 					</td>
 					<td>
 						<?php $fechaIngreso = new DateTime($model->fecha); ?>
 						<p><strong>Fecha de ingreso</strong></p>
-						<p><input type="text" value="<?php echo $fechaIngreso->format('d \d\e F Y H:i:s'); ?>"></p>
+						<p><input type="text" value="<?php echo $fechaIngreso->format('d \d\e F Y H:i:s'); ?>" readonly></p>
 					</td>
 				</tr>
 			</table>
@@ -102,7 +102,7 @@
 				<tr>
 					<td>
 						<p><strong>Kilometraje</strong></p>
-						<p><input type="text" value="<?php echo $model->kilmetraje; ?>"></p>
+						<p><input type="text" value="<?php echo $model->kilmetraje; ?>" readonly></p>
 					</td>
 				</tr>
 			</table>

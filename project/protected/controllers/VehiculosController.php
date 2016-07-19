@@ -31,6 +31,7 @@ class VehiculosController extends Controller{
 					'get_info'
 				),
 				'users'=>array('@'),
+				'expression'=>'Tools::hasPermission(3)',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -260,7 +261,7 @@ class VehiculosController extends Controller{
 				);
 
 				if(isset($_GET['template']))
-					$response['render'] = $this->renderPartial($_GET['template'], $response['vehiculo'], true);
+					$response['render'] = $this->renderPartial($_GET['template'], array('vehiculo'=>$vehiculo), true);
 			}
 
 			echo CJSON::encode($response);

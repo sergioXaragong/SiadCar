@@ -1619,3 +1619,339 @@ Stack trace:
 REQUEST_URI=/universidad/sw/siadcar/project/ingresos/admin
 HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/print/1
 ---
+2016/07/19 04:29:27 [error] [exception.CException] exception 'CException' with message 'IngresosController cannot find the requested view "admin".' in C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php:878
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#1 C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php(127): CController->render('admin', Array)
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(49): IngresosController->actionAdmin()
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('ingresos/admin')
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/admin
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/create
+---
+2016/07/19 04:58:48 [error] [php] Undefined variable: vehiculos (C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\admin.php:44)
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(869): IngresosController->renderFile()
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(782): IngresosController->renderPartial()
+#2 C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php(127): IngresosController->render()
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(49): IngresosController->actionAdmin()
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): IngresosController->runAction()
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): IngresosController->filterAccessControl()
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): IngresosController->runActionWithFilters()
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): IngresosController->run()
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CWebApplication->run()
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/admin
+in C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\admin.php (44)
+in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php (127)
+in C:\wamp\www\universidad\sw\siadcar\project\index.php (13)
+2016/07/19 05:04:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "print/view".' in C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('print/view')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/print/1
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/admin
+---
+2016/07/19 05:28:25 [error] [exception.CException] exception 'CException' with message 'Property "RegistrosIngreso.propietario0" is not defined.' in C:\wamp\www\universidad\sw\siadcar\project\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\db\ar\CActiveRecord.php(145): CComponent->__get('propietario0')
+#1 C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php(132): CActiveRecord->__get('propietario0')
+#2 [internal function]: IngresosController->actionView('1')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(IngresosController), Array)
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(IngresosController), Object(ReflectionMethod), Array)
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('ingresos/view')
+#15 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/1
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/admin
+---
+2016/07/19 06:12:16 [error] [exception.CException] exception 'CException' with message 'Property "RegistrosIngreso.propietario0" is not defined.' in C:\wamp\www\universidad\sw\siadcar\project\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\db\ar\CActiveRecord.php(145): CComponent->__get('propietario0')
+#1 C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php(151): CActiveRecord->__get('propietario0')
+#2 [internal function]: IngresosController->actionUpdate('1')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(IngresosController), Array)
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(IngresosController), Object(ReflectionMethod), Array)
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('update')
+#14 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('ingresos/update')
+#15 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/update/1
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/admin
+---
+2016/07/19 06:15:42 [error] [exception.CException] exception 'CException' with message 'Property "RegistrosIngreso.propietario0" is not defined.' in C:\wamp\www\universidad\sw\siadcar\project\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\db\ar\CActiveRecord.php(145): CComponent->__get('propietario0')
+#1 C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php(158): CActiveRecord->__get('propietario0')
+#2 [internal function]: IngresosController->actionUpdate('1')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(IngresosController), Array)
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(IngresosController), Object(ReflectionMethod), Array)
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('update')
+#14 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('ingresos/update')
+#15 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/update/1
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/admin
+---
+2016/07/19 06:30:28 [error] [php] Trying to get property of non-object (C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\_form.php:22)
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(869): IngresosController->renderFile()
+#1 C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\update.php(14): IngresosController->renderPartial()
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CBaseController.php(95): IngresosController->renderInternal()
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(869): IngresosController->renderFile()
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(782): IngresosController->renderPartial()
+#6 C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php(167): IngresosController->render()
+#7 unknown(0): IngresosController->actionUpdate()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): IngresosController->runAction()
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): IngresosController->filterAccessControl()
+#15 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): IngresosController->runActionWithFilters()
+#18 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): IngresosController->run()
+#19 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CWebApplication->run()
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/update/1
+in C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\_form.php (22)
+in C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\update.php (14)
+in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php (167)
+2016/07/19 06:31:59 [error] [php] Trying to get property of non-object (C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\_form.php:22)
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(869): IngresosController->renderFile()
+#1 C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\update.php(14): IngresosController->renderPartial()
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CBaseController.php(95): IngresosController->renderInternal()
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(869): IngresosController->renderFile()
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(782): IngresosController->renderPartial()
+#6 C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php(167): IngresosController->render()
+#7 unknown(0): IngresosController->actionUpdate()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): IngresosController->runAction()
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): IngresosController->filterAccessControl()
+#15 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): IngresosController->runActionWithFilters()
+#18 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): IngresosController->run()
+#19 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CWebApplication->run()
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/update/1
+in C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\_form.php (22)
+in C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\update.php (14)
+in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php (167)
+2016/07/19 06:33:31 [error] [php] Trying to get property of non-object (C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\_form.php:22)
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(869): IngresosController->renderFile()
+#1 C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\update.php(14): IngresosController->renderPartial()
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CBaseController.php(95): IngresosController->renderInternal()
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(869): IngresosController->renderFile()
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(782): IngresosController->renderPartial()
+#6 C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php(167): IngresosController->render()
+#7 unknown(0): IngresosController->actionUpdate()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): IngresosController->runAction()
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): IngresosController->filterAccessControl()
+#15 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): IngresosController->runActionWithFilters()
+#18 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): IngresosController->run()
+#19 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CWebApplication->run()
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/update/1
+in C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\_form.php (22)
+in C:\wamp\www\universidad\sw\siadcar\project\protected\views\ingresos\update.php (14)
+in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php (167)
+2016/07/19 06:41:42 [error] [php] Undefined variable: vehiculo (C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php:177)
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): IngresosController->runAction()
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): IngresosController->filterAccessControl()
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): IngresosController->runActionWithFilters()
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): IngresosController->run()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CWebApplication->run()
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/update__ajax/1
+in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php (177)
+in C:\wamp\www\universidad\sw\siadcar\project\index.php (13)
+2016/07/19 06:42:10 [error] [php] Undefined variable: vehiculo (C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php:194)
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): IngresosController->runAction()
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): IngresosController->filterAccessControl()
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): IngresosController->runActionWithFilters()
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): IngresosController->run()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CWebApplication->run()
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/update__ajax/1
+in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php (194)
+in C:\wamp\www\universidad\sw\siadcar\project\index.php (13)
+2016/07/19 07:10:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "change_estado".' in C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(270): CController->missingAction('change_estado')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('change_estado')
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('ingresos/change...')
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/change_estado/1
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/admin
+---
+2016/07/19 07:32:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php:235
+Stack trace:
+#0 [internal function]: IngresosController->actionChange_estado('1')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(IngresosController), Array)
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(IngresosController), Object(ReflectionMethod), Array)
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('change_estado')
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('ingresos/change...')
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/change_estado/1
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/admin
+---
+2016/07/19 07:32:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php:235
+Stack trace:
+#0 [internal function]: IngresosController->actionChange_estado('1')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(IngresosController), Array)
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(IngresosController), Object(ReflectionMethod), Array)
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('change_estado')
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('ingresos/change...')
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/change_estado/1
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/admin
+---
+2016/07/19 07:33:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php:235
+Stack trace:
+#0 [internal function]: IngresosController->actionChange_estado('1')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(IngresosController), Array)
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(IngresosController), Object(ReflectionMethod), Array)
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('change_estado')
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('ingresos/change...')
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/change_estado/1
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/admin
+---
+2016/07/19 07:33:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\universidad\sw\siadcar\project\protected\controllers\IngresosController.php:235
+Stack trace:
+#0 [internal function]: IngresosController->actionChange_estado('1')
+#1 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(IngresosController), Array)
+#2 C:\wamp\www\universidad\sw\siadcar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(IngresosController), Object(ReflectionMethod), Array)
+#3 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\universidad\sw\siadcar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(282): CController->run('change_estado')
+#12 C:\wamp\www\universidad\sw\siadcar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('ingresos/change...')
+#13 C:\wamp\www\universidad\sw\siadcar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\wamp\www\universidad\sw\siadcar\project\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/universidad/sw/siadcar/project/ingresos/change_estado/1
+HTTP_REFERER=http://localhost/universidad/sw/siadcar/project/ingresos/admin
+---

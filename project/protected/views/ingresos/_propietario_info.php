@@ -7,16 +7,16 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
-				<p><strong>Tipo: </strong><?php echo $tipo; ?></p>
+				<p><strong>Tipo: </strong><?php echo $vehiculo->tipo0->nombre; ?></p>
 			</div>
 			<div class="col-sm-6">
-				<p><strong>Marca: </strong><?php echo $marca; ?></p>
+				<p><strong>Marca: </strong><?php echo $vehiculo->marca0->nombre; ?></p>
 			</div>
 			<div class="col-sm-6">
-				<p><strong>Referncia: </strong><?php echo $referencia; ?></p>
+				<p><strong>Referncia: </strong><?php echo $vehiculo->referencia; ?></p>
 			</div>
 			<div class="col-sm-6">
-				<p><strong>Modelo: </strong><?php echo $modelo; ?></p>
+				<p><strong>Modelo: </strong><?php echo $vehiculo->modelo; ?></p>
 			</div>
 		</div>
 	</div>
@@ -28,13 +28,13 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
-				<p><strong>Nombres: </strong><?php echo $propietario['nombres']; ?></p>
+				<p><strong>Nombres: </strong><?php echo $vehiculo->propietario0->usuario0->nombres; ?></p>
 			</div>
 			<div class="col-sm-6">
-				<p><strong>Apellidos: </strong><?php echo $propietario['apellidos']; ?></p>
+				<p><strong>Apellidos: </strong><?php echo $vehiculo->propietario0->usuario0->apellidos; ?></p>
 			</div>
 			<div class="col-sm-6">
-				<p><strong>Identificación: </strong><?php echo $propietario['identificacion']; ?></p>
+				<p><strong>Identificación: </strong><?php echo $vehiculo->propietario0->usuario0->cedula; ?></p>
 			</div>
 		</div>
 	</div>

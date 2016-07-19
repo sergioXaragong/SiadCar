@@ -69,3 +69,19 @@ $.clearAreaVehiculo = function(){
 	$('#RegistrosIngreso_vehiculo').val('');
 	$('#ingresos__go__add').css('display', 'block');
 }
+
+$changeStatus = function($data){
+	$link.blur();
+	if($data.status != 'error'){
+		$tr = $link.parents('tr');
+		$tr.find('.tag__status').html($data.tag);
+
+		if($data.new != ''){
+			$new = $($data.new);
+			$link.replaceWith($new);
+			$new.tooltip();
+		}
+		else
+			$link.remove();
+	}
+}

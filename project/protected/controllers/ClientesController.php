@@ -35,7 +35,7 @@ class ClientesController extends Controller{
 					'delete_client'
 				),
 				'users'=>array('@'),
-				'expression'=>'Tools::hasPermission(1)',
+				'expression'=>'Tools::hasPermission(2)',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),

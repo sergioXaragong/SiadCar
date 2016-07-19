@@ -62,6 +62,13 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $(document).on('click', '.link__ajax', function(event) {
+        event.preventDefault();
+        $link = $(this);
+        $callback = ($link.is('[data-callback]'))?(window[$link.attr('data-callback')]):(function(){});
+        $.goLinkAjax($link, $callback);
+    });
+
     $(document).on('click', '.link__confirm', function(event) {
         event.preventDefault();
         $('.notifyjs-metro-base .notify__hidden').each(function(index, el) {
