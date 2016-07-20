@@ -138,6 +138,39 @@
 			</table>
 		</div>
 	</div>
+	<?php if(count($mantenimientos) > 0){ ?>
+		<div class="print__zone">
+			<div class="zone__header">
+				<h2>MANTENIMIENTOS</h2>
+			</div>
+			<div class="zone__body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Tipo</th>
+							<th>Mecanico</th>
+							<th>Cambios</th>
+							<th>Fecha</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($mantenimientos as $key => $mantenimiento) {
+							$fecha = new DateTime($mantenimiento->fecha);
+						?>
+							<tr>
+								<td><?php echo $key+1; ?></td>
+								<td><?php echo $mantenimiento->tipo0->nombre; ?></td>
+								<td><?php echo $mantenimiento->mecanico0->nombres; ?> <?php echo $mantenimiento->mecanico0->apellidos; ?></td>
+								<td><?php echo $mantenimiento->cambios; ?></td>
+								<td><?php echo $fecha->format('d \d\e F Y H:i:s'); ?></td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	<?php } ?>
 	<div class="print__zone">
 		<div class="zone__header">
 			<h2>OBSERVACIONES</h2>

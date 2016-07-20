@@ -117,6 +117,56 @@
 	<div class="col-xs-12">
 		<div class="widget">
 			<div class="widget__header">
+				<h2>Registro Mantenimiento</h2>
+			</div>
+			<div class="widget__body padding">
+				<div class="row">
+					<div class="col-xs-12">
+						<?php if(count($mantenimientos) > 0){ ?>
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>Tipo</th>
+										<th>Mecanico</th>
+										<th>Cambios</th>
+										<th>Fecha</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach ($mantenimientos as $key => $mantenimiento) {
+										$fecha = new DateTime($mantenimiento->fecha);
+									?>
+										<tr>
+											<td><?php echo $key+1; ?></td>
+											<td><?php echo $mantenimiento->tipo0->nombre; ?></td>
+											<td><?php echo $mantenimiento->mecanico0->nombres; ?> <?php echo $mantenimiento->mecanico0->apellidos; ?></td>
+											<td><?php echo $mantenimiento->cambios; ?></td>
+											<td><?php echo $fecha->format('d \d\e F Y H:i:s'); ?></td>
+											<td>
+												<div class="btn-group btn-group-xs">
+					        						<a href="<?php echo $this->createUrl('ingresos/mantenimientos_view/'.$mantenimiento->id) ?>" data-toggle="tooltip" title="Ver" class="btn btn-primary"><i class="fa fa-external-link"></i></a>
+					        					</div>
+											</td>
+										</tr>
+									<?php } ?>
+								</tbody>
+							</table>
+						<?php }
+						else { ?>
+							<p><strong>Ningun mantenimiento realizado.</strong></p>
+						<?php }?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="widget">
+			<div class="widget__header">
 				<h2>Observaciones</h2>
 			</div>
 			<div class="widget__body padding">
@@ -130,11 +180,13 @@
 	</div>
 </div>
 
-<div class="row end-xs">
-	<div class="col-xs-12">
-		<a href="<?php echo $this->createUrl('ingresos/print/'.$ingreso->id) ?>" class="btn">
-			<i class="fa fa-print" aria-hidden="true"></i>
-			Comprobante
-		</a>
+<?php if(Tools::hasPermission(4)){ ?>
+	<div class="row end-xs">
+		<div class="col-xs-12">
+			<a href="<?php echo $this->createUrl('ingresos/print/'.$ingreso->id) ?>" class="btn">
+				<i class="fa fa-print" aria-hidden="true"></i>
+				Comprobante
+			</a>
+		</div>
 	</div>
-</div>
+<?php } ?> 

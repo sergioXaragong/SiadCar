@@ -12,7 +12,7 @@
 			</div>
 			<div class="widget__body padding">
 				<br>
-				<div class="table-responsive">
+				<div>
 					<table class="table table__datatable table-striped" cellspacing="0" width="100%">
 						<thead>
 				            <tr>
@@ -24,6 +24,7 @@
 				                <th>Tipo</th>
 				                <th>Fecha</th>
 				                <th>Estado</th>
+				                <th></th>
 				                <th>Opciones</th>
 				            </tr>
 				        </thead>
@@ -37,6 +38,7 @@
 				                <th>Tipo</th>
 				                <th>Fecha</th>
 				                <th>Estado</th>
+				                <th></th>
 				                <th>Opciones</th>
 				            </tr>
 				        </tfoot>
@@ -65,23 +67,41 @@
 				            				<span class="label label-danger">En espera</span>
 				            			<?php } ?>
 				        			</td>
-				        			<td width="100">
+				        			<td>
+				        				<div class="btn-group btn-group-xs">
+				        					<div class="btn-group btn-group-xs" role="group">
+												<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Cambiar
+													<span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu">
+													<?php if(Tools::hasPermission(4)){ ?>
+														<li><a class="link__ajax" href="<?php echo $this->createUrl('ingresos/change_estado/'.$ingreso->id.'?estado=0'); ?>" data-callback="$changeStatus">En espera</a></li>
+													<?php } ?>
+													<li><a class="link__ajax" href="<?php echo $this->createUrl('ingresos/change_estado/'.$ingreso->id.'?estado=3'); ?>" data-callback="$changeStatus">En revisión</a></li>
+													<li><a class="link__ajax" href="<?php echo $this->createUrl('ingresos/change_estado/'.$ingreso->id.'?estado=4'); ?>" data-callback="$changeStatus">Listo</a></li>
+													<?php if(Tools::hasPermission(4)){ ?>
+														<li><a class="link__ajax" href="<?php echo $this->createUrl('ingresos/change_estado/'.$ingreso->id.'?estado=1'); ?>" data-callback="$changeStatus">Entregado</a></li>
+													<?php } ?>
+												</ul>
+											</div>
+										</div>
+				        			</td>
+				        			<td width="110">
 				        				<div class="btn-group btn-group-xs">
 				        					<a href="<?php echo $this->createUrl('ingresos/'.$ingreso->id) ?>" data-toggle="tooltip" title="Ver" class="btn btn-primary"><i class="fa fa-external-link"></i></a>
-				        					<a href="<?php echo $this->createUrl('ingresos/print/'.$ingreso->id) ?>" data-toggle="tooltip" title="Comprobante" class="btn btn-primary"><i class="fa fa-print"></i></a>
+				        					<?php if(Tools::hasPermission(4)){ ?>
+				        						<a href="<?php echo $this->createUrl('ingresos/print/'.$ingreso->id) ?>" data-toggle="tooltip" title="Comprobante" class="btn btn-primary"><i class="fa fa-print"></i></a>
+			        						<?php } ?>
 				        					
 				        					<?php if(Yii::app()->user->getState('_rolUser') == 1){ ?>
 												<a href="<?php echo $this->createUrl('ingresos/update/'.$ingreso->id); ?>" data-toggle="tooltip" title="Editar" class="btn btn-primary"><i class="fa fa-edit"></i></a>
 											<?php } ?>
 
-											<?php if($ingreso->estado == 0){ ?>
-												<a href="<?php echo $this->createUrl('ingresos/change_estado/'.$ingreso->id); ?>" data-toggle="tooltip" title="En revisión" class="btn btn-primary link__ajax" data-callback="$changeStatus"><i class="fa fa-wrench"></i></a>
-											<?php }
-											elseif($ingreso->estado == 3){ ?>
-												<a href="<?php echo $this->createUrl('ingresos/change_estado/'.$ingreso->id); ?>" data-toggle="tooltip" title="Listo" class="btn btn-primary link__ajax" data-callback="$changeStatus"><i class="fa fa-star-half-o"></i></a>
-											<?php }
-											elseif($ingreso->estado == 4){ ?>
-												<a href="<?php echo $this->createUrl('ingresos/change_estado/'.$ingreso->id); ?>" data-toggle="tooltip" title="Entregado" class="btn btn-primary link__ajax" data-callback="$changeStatus"><i class="fa fa-share-square-o"></i></a>
+											<a style="<?php echo ($ingreso->estado != 3)?'display:none':''; ?>" href="<?php echo $this->createUrl('ingresos/mantenimientos/'.$ingreso->id); ?>" data-toggle="tooltip" title="Mantenimientos" class="status__active btn btn-primary" data-status__active="3"><i class="fa fa-wrench"></i></a>
+
+											<?php if(Yii::app()->user->getState('_rolUser') == 1){ ?>
+												<a href="<?php echo $this->createUrl('ingresos/delete_ingreso/'.$ingreso->id); ?>" data-toggle="tooltip" title="Eliminar" class="btn btn-primary link__confirm" data-cofirm__text="El registro de ingreso del vehiculo <?php echo $vehiculo->placas ?> sera eliminado del sistema, una vez realizado el proceso no podra revertir los cambios. Desea continuar con el proceso?" data-confirm__class="link__item-table__delete"><i class="fa fa-power-off"></i></a>
 											<?php } ?>
 				        				</div>
 				        			</td>

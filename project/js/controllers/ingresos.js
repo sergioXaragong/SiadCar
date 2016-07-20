@@ -76,12 +76,11 @@ $changeStatus = function($data){
 		$tr = $link.parents('tr');
 		$tr.find('.tag__status').html($data.tag);
 
-		if($data.new != ''){
-			$new = $($data.new);
-			$link.replaceWith($new);
-			$new.tooltip();
-		}
-		else
-			$link.remove();
+		$tr.find('.status__active').each(function(index, el) {
+			if($data.new == $(this).attr('data-status__active'))
+				$(this).css('display', 'block');
+			else
+				$(this).css('display', 'none');
+		});
 	}
 }

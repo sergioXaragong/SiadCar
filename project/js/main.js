@@ -133,6 +133,10 @@ $.clearForm = function($form){
         $(this).val($option);
         $(this).change();
     });
+
+    $form.find('.ckeditor').each(function(index, el) {
+        CKEDITOR.instances[$(this).attr('id')].setData('');
+    });
 }
 
 $.goLinkAjax = function($link, $callback){

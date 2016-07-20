@@ -24,9 +24,6 @@ class IngresosController extends Controller{
 				'actions'=>array(
 					'create','create__ajax',
 					'print',
-					'admin',
-					'view',
-					'change_estado'
 				),
 				'users'=>array('@'),
 				'expression'=>'Tools::hasPermission(4)',
@@ -34,9 +31,26 @@ class IngresosController extends Controller{
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array(
 					'update','update__ajax',
+					'delete_ingreso',
+
+					'mantenimientos_delete',
 				),
 				'users'=>array('@'),
-				'expression'=>'Tools::hasPermission(4) && (Yii::app()->user->getState("_rolUser") == 1)',
+				'expression'=>'(Yii::app()->user->getState("_rolUser") == 1)',
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array(
+					'admin',
+					'view',
+					'change_estado',
+
+					'mantenimientos',
+					'mantenimientos_create', 'mantenimientos_create__ajax',
+					'mantenimientos_view',
+					'mantenimientos_update', 'mantenimientos_update__ajax',
+				),
+				'users'=>array('@'),
+				'expression'=>'Tools::hasPermission(4) || Tools::hasPermission(5)',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -116,10 +130,14 @@ class IngresosController extends Controller{
 		$vehiculo = $model->vehiculo0;
 		$propietario = $vehiculo->propietario0;
 
+		$mantenimientos = Mantenimientos::model()->findAllByAttributes(array('ingreso'=>$model->id,'estado'=>1));
+
 		$this->render('print', array(
 			'model'=>$model,
 			'vehiculo'=>$vehiculo,
 			'propietario'=>$propietario,
+
+			'mantenimientos'=>$mantenimientos
 		));
 	}
 
@@ -127,7 +145,10 @@ class IngresosController extends Controller{
 		$load = Yii::app()->getClientScript();
 		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/controllers/ingresos.js',CClientScript::POS_END);
 
-		$ingresos = RegistrosIngreso::model()->findAll(array('condition'=>'t.estado != 2'));
+		if(Yii::app()->user->getState("_rolUser") == 3)
+			$ingresos = RegistrosIngreso::model()->findAllByAttributes(array('estado'=>3));
+		if(Tools::hasPermission(4))
+			$ingresos = RegistrosIngreso::model()->findAll(array('condition'=>'t.estado != 2'));
 
 		$this->render('admin', array(
 			'ingresos'=>$ingresos
@@ -139,10 +160,14 @@ class IngresosController extends Controller{
 		$vehiculo = $ingreso->vehiculo0;
 		$propietario = $vehiculo->propietario0;
 
+		$mantenimientos = Mantenimientos::model()->findAllByAttributes(array('ingreso'=>$ingreso->id,'estado'=>1));
+
 		$this->render('view', array(
 			'ingreso'=>$ingreso,
 			'vehiculo'=>$vehiculo,
-			'propietario'=>$propietario
+			'propietario'=>$propietario,
+
+			'mantenimientos'=>$mantenimientos
 		));
 	}
 
@@ -217,28 +242,33 @@ class IngresosController extends Controller{
 	}
 
 	public function actionChange_estado($id){
-		if(Yii::app()->getRequest()->getIsAjaxRequest()){
+		if(Yii::app()->getRequest()->getIsAjaxRequest() && isset($_GET['estado'])){
 			$response = array('status'=>'error');
 			$ingreso = $this->loadModel($id);
 
-			if($ingreso->estado == 0){
-				$ingreso->estado = 3;
-				$response['tag'] = '<span class="label label-warning">En revisión</span>';
-				$response['new'] = '<a href="'.$this->createUrl('ingresos/change_estado/'.$ingreso->id).'" data-toggle="tooltip" title="Listo" class="btn btn-primary link__ajax" data-callback="$changeStatus"><i class="fa fa-star-half-o"></i></a>';
-			}
-			else if($ingreso->estado == 3){
-				$ingreso->estado = 4;
-				$response['tag'] = '<span class="label label-success">Listo</span>';
-				$response['new'] = '<a href="'.$this->createUrl('ingresos/change_estado/'.$ingreso->id).'" data-toggle="tooltip" title="Entregado" class="btn btn-primary link__ajax" data-callback="$changeStatus"><i class="fa fa-share-square-o"></i></a>';
-			}
-			else if($ingreso->estado == 4){
-				$ingreso->estado = 1;
-				$response['tag'] = '<span class="label label-primary">Entregado</span>';
-				$response['new'] = '';
-			}
+			if(Tools::hasPermission(4))
+				$estados = [0,1,3,4];
+			else
+				$estados = [3,4];
 
-			if($ingreso->save())
+			if(!(in_array($_GET['estado'], $estados)))
+				throw new CHttpException(403,'You are not authorized to perform this action.');
+
+			$ingreso->estado = $_GET['estado'];
+
+			if($ingreso->estado == 3)
+				$response['tag'] = '<span class="label label-warning">En revisión</span>';
+			else if($ingreso->estado == 4)
+				$response['tag'] = '<span class="label label-success">Listo</span>';
+			else if($ingreso->estado == 1)
+				$response['tag'] = '<span class="label label-primary">Entregado</span>';
+			else
+				$response['tag'] = '<span class="label label-danger">En espera</span>';
+
+			if($ingreso->save()){
 				$response['status'] = 'success';
+				$response['new'] = $ingreso->estado;
+			}
 
 			echo CJSON::encode($response);
 		}
@@ -246,9 +276,219 @@ class IngresosController extends Controller{
             throw new CHttpException(404,'The requested page does not exist.');
 	}
 
+	public function actionDelete_ingreso($id){
+		if(Yii::app()->getRequest()->getIsAjaxRequest()){
+			$model = $this->loadModel($id);
+			$vehiculo = $model->vehiculo0;
+
+			$mantenimientos = Mantenimientos::model()->findAllByAttributes(array('ingreso'=>$model->id));
+			foreach ($mantenimientos as $key => $mantenimiento) {
+				$mantenimiento->estado = 2;
+				$mantenimiento->save();
+			}
+
+			$model->estado = 2;
+			$model->save();
+
+			$response['status'] = 'success';
+			$response['title'] = 'Echo';
+			$response['message'] = 'El registro de ingreso del vehiculo '.$vehiculo->placas.' se a eliminado del sistema.';
+
+			echo CJSON::encode($response);
+		}
+		else
+            throw new CHttpException(404,'The requested page does not exist.');
+	}
+
+	/***********************************************************************/
+
+	public function actionMantenimientos($id){
+		$load = Yii::app()->getClientScript();
+		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/controllers/mantenimientos.js',CClientScript::POS_END);
+
+		$ingreso = $this->loadModel($id);
+		$mantenimientos = Mantenimientos::model()->findAllByAttributes(array('ingreso'=>$ingreso->id),array('condition'=>'t.estado != 2'));
+
+		$this->render('//mantenimientos/admin', array(
+			'ingreso'=>$ingreso,
+			'mantenimientos'=>$mantenimientos
+		));
+	}
+
+	public function actionMantenimientos_create($id){
+		$load = Yii::app()->getClientScript();
+		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/controllers/mantenimientos.js',CClientScript::POS_END);
+
+		$ingreso = $this->loadModel($id);
+		if($ingreso->estado != 3)
+			throw new CHttpException(404,'The requested page does not exist.');
+		$model = new Mantenimientos;
+
+		$tipos = TiposIngreso::model()->findAll();
+		$mecanicos = Usuarios::model()->findAllByAttributes(array('rol'=>3, 'estado'=>1));
+
+		$this->render('//mantenimientos/create', array(
+			'ingreso'=>$ingreso,
+			'model'=>$model,
+
+			'tipos'=>Tools::toListSelect($tipos, 'id', 'nombre'),
+			'mecanicos'=>Tools::toListSelect($mecanicos, 'id', 'nombres'),
+		));
+	}
+	public function actionMantenimientos_create__ajax($id){
+		if(Yii::app()->getRequest()->getIsAjaxRequest() && isset($_POST['Mantenimientos'])){
+			$response = array('status'=>'error');
+
+			$ingreso = $this->loadModel($id);
+			if($ingreso->estado == 3){
+				$vehiculo = $ingreso->vehiculo0;
+				$model = new Mantenimientos;
+
+				$model->attributes=$_POST['Mantenimientos'];
+				$model->ingreso = $ingreso->id;
+				$model->usuario_registro = Yii::app()->user->getState('_idUser');
+				$model->fecha = new CDbExpression('now()');
+
+				if(Yii::app()->user->getState("_rolUser") == 3)
+					$model->mecanico = Yii::app()->user->getState('_idUser');
+
+				if($model->cambios != ''){
+					if($model->save()){
+						$response['title'] = 'Hecho';
+		            	$response['message'] = 'Se agrego el registro de mantenimiento al vehiculo con placas '.$vehiculo->placas.'.';
+		            	$response['status'] = 'success';
+					}
+					else{
+		            	$errors = $model->getErrors();
+						$keyErrors = array_keys($model->getErrors());
+
+						$response['title'] = 'Error validación';
+		            	$response['message'] = $keyErrors[0].': '.$errors[$keyErrors[0]][0];
+					}
+				}
+				else{
+					$response['title'] = 'Error validación';
+	        		$response['message'] = 'Tiene que especificar los cambios que se le hicieron al vehiculo.';
+				}				
+			}
+			else{
+				$response['title'] = 'Error validación';
+        		$response['message'] = 'En el estado que se encuentra el vehiculo no se pueden asignar registros de mantenimiento.';
+			}
+
+			echo CJSON::encode($response);
+		}
+		else
+			throw new CHttpException(404,'The requested page does not exist.');
+	}
+
+	public function actionMantenimientos_view($id){
+		$mantenimiento = $this->loadModelMantenimiento($id);
+		$ingreso = $mantenimiento->ingreso0;
+		$vehiculo = $ingreso->vehiculo0;
+		$propietario = $vehiculo->propietario0;
+
+		$this->render('//mantenimientos/view', array(
+			'mantenimiento'=>$mantenimiento,
+			'ingreso'=>$ingreso,
+			'vehiculo'=>$vehiculo,
+			'propietario'=>$propietario
+		));
+	}
+
+	public function actionMantenimientos_update($id){
+		$load = Yii::app()->getClientScript();
+		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/controllers/mantenimientos.js',CClientScript::POS_END);
+
+		$model = $this->loadModelMantenimiento($id);
+		$ingreso = $model->ingreso0;
+
+		if($ingreso->estado != 3)
+			throw new CHttpException(404,'The requested page does not exist.');
+
+		$tipos = TiposIngreso::model()->findAll();
+		$mecanicos = Usuarios::model()->findAllByAttributes(array('rol'=>3, 'estado'=>1));
+
+		$this->render('//mantenimientos/update', array(
+			'ingreso'=>$ingreso,
+			'model'=>$model,
+
+			'tipos'=>Tools::toListSelect($tipos, 'id', 'nombre'),
+			'mecanicos'=>Tools::toListSelect($mecanicos, 'id', 'nombres'),
+		));
+	}
+	public function actionMantenimientos_update__ajax($id){
+		if(Yii::app()->getRequest()->getIsAjaxRequest() && isset($_POST['Mantenimientos'])){
+			$response = array('status'=>'error');
+
+			$model = $this->loadModelMantenimiento($id);
+			$ingreso = $model->ingreso0;
+			$vehiculo = $ingreso->vehiculo0;
+
+			if($model->usuario_registro == Yii::app()->user->getState('_idUser')){
+				if($ingreso->estado == 3){
+					$model->attributes=$_POST['Mantenimientos'];
+					$model->ingreso = $ingreso->id;
+					if($model->cambios != ''){
+						if($model->save()){
+							$response['title'] = 'Hecho';
+			            	$response['message'] = 'Se modifico el registro de mantenimiento al vehiculo con placas '.$vehiculo->placas.'.';
+			            	$response['status'] = 'success';
+						}
+						else{
+			            	$errors = $model->getErrors();
+							$keyErrors = array_keys($model->getErrors());
+
+							$response['title'] = 'Error validación';
+			            	$response['message'] = $keyErrors[0].': '.$errors[$keyErrors[0]][0];
+						}
+					}
+					else{
+						$response['title'] = 'Error validación';
+		        		$response['message'] = 'Tiene que especificar los cambios que se le hicieron al vehiculo.';
+					}
+				}
+				else{
+					$response['title'] = 'Error validación';
+	        		$response['message'] = 'En el estado que se encuentra el vehiculo no se pueden modificar registros de mantenimiento.';
+				}
+			}
+			else{
+				$response['title'] = 'Error validación';
+        		$response['message'] = 'No es posible modificar los valores de este registro.';
+			}
+
+			echo CJSON::encode($response);
+		}
+		else
+			throw new CHttpException(404,'The requested page does not exist.');
+	}
+
+	public function actionMantenimientos_delete($id){
+		if(Yii::app()->getRequest()->getIsAjaxRequest()){
+			$mantenimiento = $this->loadModelMantenimiento($id);
+			$mantenimiento->estado = 2;
+			$mantenimiento->save();
+
+			$response['status'] = 'success';
+			$response['title'] = 'Echo';
+			$response['message'] = 'El registro de mantenimiento se a eliminado del sistema.';
+
+			echo CJSON::encode($response);
+		}
+	}
+
 	private function loadModel($id)
 	{
 		$model=RegistrosIngreso::model()->findByAttributes(array('id'=>$id), array('condition'=>'t.estado != 2'));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+
+	private function loadModelMantenimiento($id)
+	{
+		$model=Mantenimientos::model()->findByAttributes(array('id'=>$id), array('condition'=>'t.estado != 2'));
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

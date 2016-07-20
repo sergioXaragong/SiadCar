@@ -41,7 +41,7 @@
           <?php } ?>
 
 
-          <?php if(Tools::hasPermission(4)){ ?>
+          <?php if(Tools::hasPermission(4) || Tools::hasPermission(5)){ ?>
             <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'ingresos')?'active':''; ?>">
               <p class="item row middle-xs">
                 <span class="item__icon"><i class="fa fa-sign-in"></i></span>
@@ -50,7 +50,9 @@
               </p>
               <ul class="submenu">
                 <li><a href="<?php echo $this->createUrl('ingresos/admin') ?>">Listar</a></li>
-                <li><a href="<?php echo $this->createUrl('ingresos/create') ?>">Agregar</a></li>
+                <?php if(Tools::hasPermission(4)){ ?>
+                  <li><a href="<?php echo $this->createUrl('ingresos/create') ?>">Agregar</a></li>
+                <?php } ?>
               </ul>
             </li>
           <?php } ?>
