@@ -1,0 +1,27 @@
+.dashboard{
+	.dashboard__widgets{
+		.widget{
+			@this__padding: @padding;
+			background-color: @color__base__500;
+			color: @color__white;
+			padding: @this__padding;
+			position: relative;
+			.widget__icon{
+				font-size: 3em;
+				position: absolute;
+				right: @this__padding;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.widget__text{
+				h2{
+					font-size: 3em;
+					margin: 0px;
+				}
+				p{
+					margin: 0px;
+				}
+			}
+		}
+	}
+}

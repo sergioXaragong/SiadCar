@@ -28,8 +28,17 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 		if(!Yii::app()->user->isGuest){
+			$clientes = Clientes::model()->countByAttributes(array('estado'=>1));
+			$vehiculos = Vehiculos::model()->countByAttributes(array('estado'=>1));
+			$espera = RegistrosIngreso::model()->countByAttributes(array('estado'=>0));
+
+			$mantenimientos = RegistrosIngreso::model()->findAllByAttributes(array('estado'=>3), array('order'=>'t.fecha ASC'));
+
 			$this->render('index', array(
-				
+				'clientes'=>$clientes,
+				'vehiculos'=>$vehiculos,
+				'espera'=>$espera,
+				'mantenimientos'=>$mantenimientos,
 			));
 		}
 		else{
@@ -42,6 +51,10 @@ class SiteController extends Controller
 	 */
 	public function actionError()
 	{
+		if (Yii::app()->user->isGuest)
+			$this->layout = '//layouts/login';
+		else
+			$this->layout = '//layouts/main';
 		if($error=Yii::app()->errorHandler->error)
 		{
 			if(Yii::app()->request->isAjaxRequest)
