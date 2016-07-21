@@ -199,7 +199,11 @@ class VehiculosController extends Controller{
 			$vehiculo->propietario = $cliente->id;
 			$vehiculo->attributes=$postVehiculos;
 
-			$existVehiculo = Vehiculos::model()->findByAttributes(array('placas'=>$vehiculo->placas));
+			if($existModel == null)
+				$existVehiculo = Vehiculos::model()->findByAttributes(array('placas'=>$vehiculo->placas));
+			else
+				$existVehiculo = Vehiculos::model()->findByAttributes(array('placas'=>$vehiculo->placas), array('condition'=>'t.id != '.$vehiculo->id));
+
 			if($existVehiculo != null){
 				$error = true;
 				$response['title'] = 'Error validación';

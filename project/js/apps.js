@@ -66,7 +66,7 @@ $.showConfirm = function($text, $link, $link__class, $style){
 
     $.notify({
         title: 'Esta seguro?',
-        text: $text+'<div class="clearfix"></div><br><a href="'+$link+'" class="btn btn-sm btn-default notify__hidden '+$link__class+'">Si</a> <a class="btn btn-sm btn-danger notify__hidden">No</a>',
+        text: $text+'<div class="clearfix"></div><br><a href="'+$link+'" class="btn btn-sm btn-primary notify__hidden '+$link__class+'">Si</a> <a class="btn btn-sm btn-danger notify__hidden">No</a>',
         image: "<i class='"+$icon+"'></i>"
     }, {
         style: 'metro',
