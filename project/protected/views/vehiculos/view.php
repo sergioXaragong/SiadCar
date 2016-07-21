@@ -118,7 +118,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<?php if(count($ingresos) > 0){ ?>
-							<table class="table table-hover">
+							<table class="table">
 								<thead>
 									<tr>
 										<th>No.</th>
@@ -126,6 +126,7 @@
 										<th>Fecha</th>
 										<th>Observaciones cliente</th>
 										<th>Observaciones</th>
+										<th>Estado<th>
 										<th></th>
 									</tr>
 								</thead>
@@ -139,6 +140,13 @@
 											<td><?php echo $fechaIngreso->format('d \d\e F Y H:i:s'); ?></td>
 											<td><?php echo $ingreso->observaciones_cliente; ?></td>
 											<td><?php echo $ingreso->observaciones; ?></td>
+											<td><p>
+													<?php if($ingreso->estado == 1){ echo "Entregado"; }
+													elseif($ingreso->estado == 3){ echo "En revisión"; }
+													elseif($ingreso->estado == 4){ echo "Listo"; }
+													else{ echo "En espera"; } ?>
+						            			</p>
+											</td>
 											<td>
 												<div class="btn-group btn-group-xs">
 					        						<a href="<?php echo $this->createUrl('ingresos/'.$vehiculo->id) ?>" data-toggle="tooltip" title="Ver" class="btn btn-primary"><i class="fa fa-external-link"></i></a>
@@ -156,5 +164,14 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+
+<div class="row end-xs">
+	<div class="col-xs-12">
+		<a href="<?php echo $this->createUrl('vehiculos/print/'.$vehiculo->id) ?>" class="btn">
+			<i class="fa fa-print" aria-hidden="true"></i>
+			Generar vista impresión
+		</a>
 	</div>
 </div>

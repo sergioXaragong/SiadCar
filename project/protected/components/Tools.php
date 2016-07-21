@@ -15,6 +15,23 @@ class Tools extends CApplicationComponent{
 		return crypt($password, $salt);
 	}
 
+	public static function strToUpper($cadena){
+		return strtr(strtoupper($cadena),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+	}
+
+	public static function dateIsValid($value, $format='d/m/Y h:i A'){
+		date_default_timezone_set('America/Bogota');
+		
+	    $isValid = false;
+	    $value = trim($value);
+		$date = @date_create(str_replace("/","-",$value), new DateTimeZone('Europe/London'));
+
+		if(@date_format($date, $format) == $value)
+			$isValid = true;
+
+		return $isValid;
+	}
+
 	public static function hasPermission($permission){
 		$user = Usuarios::model()->findByAttributes(array('id'=>Yii::app()->user->getState('_idUser'), 'estado'=>1));
 

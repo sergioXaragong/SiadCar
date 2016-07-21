@@ -72,7 +72,14 @@
             </li>
           <?php } ?>
         
-
+          <?php if(Tools::hasPermission(6)){ ?>
+            <li class="menu__item <?php echo (strtolower($path[0]) == 'reportes')?'active':''; ?>">
+              <a class="item row middle-xs" href="<?php echo $this->createUrl('reportes/create'); ?>">
+                <span class="item__icon"><i class="fa fa-bar-chart"></i></span>
+                <span>Reportes</span>
+              </a>
+            </li>
+          <?php } ?>
 
 
         </ul>

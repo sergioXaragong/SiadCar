@@ -63,6 +63,7 @@
 				        			<td>
 				        				<div class="btn-group btn-group-xs">
 				        					<a href="<?php echo $this->createUrl('vehiculos/'.$vehiculo->id) ?>" data-toggle="tooltip" title="Ver" class="btn btn-primary"><i class="fa fa-external-link"></i></a>
+				        					<a href="<?php echo $this->createUrl('vehiculos/print/'.$vehiculo->id) ?>" data-toggle="tooltip" title="Hoja de vida" class="btn btn-primary"><i class="fa fa-print"></i></a>
 											<a href="<?php echo $this->createUrl('vehiculos/update/'.$vehiculo->id); ?>" data-toggle="tooltip" title="Editar" class="btn btn-primary"><i class="fa fa-edit"></i></a>
 											<a href="<?php echo $this->createUrl('vehiculos/delete_vehiculo/'.$vehiculo->id); ?>" data-toggle="tooltip" title="Eliminar" class="btn btn-primary link__confirm" data-cofirm__text="El vehiculo de placas <?php echo $vehiculo->placas; ?> sera eliminado del sistema, una vez realizado el proceso no podra revertir los cambios. Desea continuar con el proceso?" data-confirm__class="link__item-table__delete"><i class="fa fa-power-off"></i></a>
 				        				</div>

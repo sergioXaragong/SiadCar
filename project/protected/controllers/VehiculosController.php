@@ -28,6 +28,8 @@ class VehiculosController extends Controller{
 					'update','update__ajax',
 					'delete_vehiculo',
 
+					'print',
+
 					'get_info'
 				),
 				'users'=>array('@'),
@@ -240,6 +242,20 @@ class VehiculosController extends Controller{
 		}
 
 		return $response;
+	}
+
+	public function actionPrint($id){
+		$vehiculo = $this->loadModel($id);
+		$propietario = $vehiculo->propietario0;
+
+		$ingresos = RegistrosIngreso::model()->findAllByAttributes(array('vehiculo'=>$vehiculo->id), array('condition'=>'t.estado != 2'));
+
+		$this->render('print', array(
+			'vehiculo'=>$vehiculo,
+			'propietario'=>$propietario,
+
+			'ingresos'=>$ingresos
+		));
 	}
 
 	public function actionGet_info(){
