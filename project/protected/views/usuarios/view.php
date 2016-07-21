@@ -88,11 +88,44 @@
 								<p>**********</p>
 							</div>
 						</div>
+						<div id="change__form" style="display: none;">
+							<div class="row">
+								<form id="form__change" method="POST" action="<?php echo $this->createUrl('profile/change_pass'); ?>" class="form success__clear-form col-xs-12">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form__section">
+												<label class="form__label">Contraseña nueva:</label>
+												<input type="password" name="Password[new]" id="pass__new" class="form__input">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form__section">
+												<label class="form__label">Repetir contraseña:</label>
+												<input type="password" id="pass__new2" class="form__input">
+											</div>
+										</div>
+									</div>
+									<div class="row bottom-xs">
+										<div class="col-sm-6">
+											<div class="form__section">
+												<label class="form__label">Contraseña actual:</label>
+												<input type="password" name="Password[current]" id="pass__current" class="form__input">
+											</div>
+										</div>
+										<div class="col-sm-6 end-xs">
+											<div class="form__section">
+												<button type="submit" class="btn">Cambiar</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
 
 						<?php if($user->id == Yii::app()->user->getState('_idUser')){ ?>
-							<div class="row">
+							<div class="row hidden__change">
 								<div class="col-xs-12">
-									<a href="#" class="btn">Modificar</a>
+									<a href="#" id="change__password" class="btn">Modificar</a>
 								</div>
 							</div>
 						<?php } ?>

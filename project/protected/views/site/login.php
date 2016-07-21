@@ -34,7 +34,4 @@
             <?php $this->endWidget(); ?>
           </div>
         </div>
-        <div class="row center-xs">
-          <div class="col-xs-12"><a href="login__restablecer-password.html">¿Olvidaste tu contraseña?</a></div>
-        </div>
       </div>
