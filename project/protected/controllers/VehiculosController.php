@@ -152,7 +152,7 @@ class VehiculosController extends Controller{
 			$model->estado = 2;
 			if($model->save()){
 				$response['status'] = 'success';
-				$response['title'] = 'Echo';
+				$response['title'] = 'Hecho';
 				$response['message'] = 'El vehiculo se a eliminado del sistema.';
 			}
 			else{
@@ -230,7 +230,7 @@ class VehiculosController extends Controller{
 
 			if(!$error){
 				if($vehiculo->save()){
-					$response['title'] = 'Echo';
+					$response['title'] = 'Hecho';
 	            	$response['status'] = 'success';
 	            	
 	            	if($existModel == null)

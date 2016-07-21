@@ -101,7 +101,7 @@ class IngresosController extends Controller{
             	$model->elementos = CJSON::encode($elementos);
 
 				if($model->save()){
-					$response['title'] = 'Echo';
+					$response['title'] = 'Hecho';
 	            	$response['message'] = 'Se hizo el registro de ingreso del vehiculo con placas '.$vehiculo->placas.'. ¿Desea ver el comprobante de ingreso?';
 	            	$response['status'] = 'success';
 	            	$response['print'] = $this->createUrl('ingresos/print/'.$model->id);
@@ -217,7 +217,7 @@ class IngresosController extends Controller{
             	$model->elementos = CJSON::encode($elementos);
 
 				if($model->save()){
-					$response['title'] = 'Echo';
+					$response['title'] = 'Hecho';
 	            	$response['message'] = 'Se modifico el registro de ingreso del vehiculo con placas '.$vehiculo->placas.'. ¿Desea ver el comprobante de ingreso?';
 	            	$response['status'] = 'success';
 	            	$response['print'] = $this->createUrl('ingresos/print/'.$model->id);
@@ -291,7 +291,7 @@ class IngresosController extends Controller{
 			$model->save();
 
 			$response['status'] = 'success';
-			$response['title'] = 'Echo';
+			$response['title'] = 'Hecho';
 			$response['message'] = 'El registro de ingreso del vehiculo '.$vehiculo->placas.' se a eliminado del sistema.';
 
 			echo CJSON::encode($response);
@@ -471,7 +471,7 @@ class IngresosController extends Controller{
 			$mantenimiento->save();
 
 			$response['status'] = 'success';
-			$response['title'] = 'Echo';
+			$response['title'] = 'Hecho';
 			$response['message'] = 'El registro de mantenimiento se a eliminado del sistema.';
 
 			echo CJSON::encode($response);

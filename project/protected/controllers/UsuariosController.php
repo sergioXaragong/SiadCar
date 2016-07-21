@@ -116,7 +116,7 @@ class UsuariosController extends Controller{
 		            if($model->validate(null, false)){
 		            	$model->save();
 
-		            	$response['title'] = 'Echo';
+		            	$response['title'] = 'Hecho';
 		            	$response['message'] = 'El nuevo usuario se agrego con exito. Estos son sus datos de acceso. <br> <p><strong>Usuario:</strong> '.$model->cedula.'</p><p><strong>Password:</strong> '.$passDefault.'</p>';
 		            	$response['status'] = 'success';
 		            }
@@ -167,7 +167,7 @@ class UsuariosController extends Controller{
 			$model->password = Tools::crypt($passDefault);
 
 			if($model->save()){
-				$response['title'] = 'Echo';
+				$response['title'] = 'Hecho';
             	$response['message'] = 'Al usuario '.$model->nombres.' se le cambio la contraseña con exito. Estos son sus datos de acceso. <br> <p><strong>Usuario:</strong> '.$model->cedula.'</p><p><strong>Password:</strong> '.$passDefault.'</p>';
             	$response['status'] = 'success';
 			}
@@ -247,7 +247,7 @@ class UsuariosController extends Controller{
 		            if($model->validate(null, false)){
 		            	$model->save();
 
-		            	$response['title'] = 'Echo';
+		            	$response['title'] = 'Hecho';
 		            	$response['message'] = 'Los datos del usuario '.$model->nombres.' se modificaron con exito.';
 		            	$response['status'] = 'success';
 		            }
@@ -278,7 +278,7 @@ class UsuariosController extends Controller{
 			$model->estado = 2;
 			if($model->save()){
 				$response['status'] = 'success';
-				$response['title'] = 'Echo';
+				$response['title'] = 'Hecho';
 				$response['message'] = 'El usuario se a eliminado del sistema.';
 			}
 			else{

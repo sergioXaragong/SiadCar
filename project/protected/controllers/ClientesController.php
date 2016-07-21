@@ -162,7 +162,7 @@ class ClientesController extends Controller{
 						if($modelUser->save()){
 							$modelClient->usuario = $modelUser->id;
 							if($modelClient->save()){
-				            	$response['title'] = 'Echo';
+				            	$response['title'] = 'Hecho';
 				            	$response['message'] = 'Los datos del cliente '.$modelUser->nombres.' se modificaron con exito.';
 				            	$response['status'] = 'success';
 							}
@@ -204,7 +204,7 @@ class ClientesController extends Controller{
 				}
 
 				$response['status'] = 'success';
-				$response['title'] = 'Echo';
+				$response['title'] = 'Hecho';
 				$response['message'] = 'El cliente se a eliminado del sistema.';
 			}
 			else{
