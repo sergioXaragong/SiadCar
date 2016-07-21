@@ -109,7 +109,7 @@
 						<div class="col-sm-3">
 							<div class="form__section">
 								<label class="form__label">Modelo:</label>
-								<?php echo $form->textField($model,'modelo',array('maxlength'=>11,'class'=>'form__input','required'=>true)); ?>
+								<?php echo $form->numberField($model,'modelo',array('maxlength'=>11,'class'=>'form__input','required'=>true)); ?>
 						  	</div>
 						</div>
 						<div class="col-sm-4">
