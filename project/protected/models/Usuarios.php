@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'usuarios':
  * @property integer $id
- * @property string $cedula
+ * @property integer $cedula
  * @property string $password
  * @property string $nombres
  * @property string $apellidos
@@ -21,6 +21,9 @@
  *
  * The followings are the available model relations:
  * @property Clientes[] $clientes
+ * @property Mantenimientos[] $mantenimientoses
+ * @property Mantenimientos[] $mantenimientoses1
+ * @property RegistrosIngreso[] $registrosIngresos
  * @property RolsUsuario $rol0
  */
 class Usuarios extends CActiveRecord
@@ -42,8 +45,7 @@ class Usuarios extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('cedula, password, nombres, apellidos, rol, fecha_creacion, fecha_sesion_actual, fecha_ultima_sesion', 'required'),
-			array('rol, estado', 'numerical', 'integerOnly'=>true),
-			array('cedula', 'length', 'max'=>45),
+			array('cedula, rol, estado', 'numerical', 'integerOnly'=>true),
 			array('password, nombres, apellidos, image', 'length', 'max'=>155),
 			array('telefono', 'length', 'max'=>65),
 			array('email, permisos', 'length', 'max'=>255),
@@ -62,6 +64,9 @@ class Usuarios extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'clientes' => array(self::HAS_MANY, 'Clientes', 'usuario'),
+			'mantenimientoses' => array(self::HAS_MANY, 'Mantenimientos', 'mecanico'),
+			'mantenimientoses1' => array(self::HAS_MANY, 'Mantenimientos', 'usuario_registro'),
+			'registrosIngresos' => array(self::HAS_MANY, 'RegistrosIngreso', 'recibio'),
 			'rol0' => array(self::BELONGS_TO, 'RolsUsuario', 'rol'),
 		);
 	}
@@ -73,16 +78,16 @@ class Usuarios extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'cedula' => 'Cedula',
-			'password' => 'Password',
+			'cedula' => 'Identificación',
+			'password' => 'Contraseña',
 			'nombres' => 'Nombres',
 			'apellidos' => 'Apellidos',
-			'telefono' => 'Telefono',
-			'email' => 'Email',
-			'image' => 'Image',
+			'telefono' => 'Teléfono',
+			'email' => 'Correo electrónico',
+			'image' => 'Imagen',
 			'rol' => 'Rol',
 			'permisos' => 'Permisos',
-			'fecha_creacion' => 'Fecha Creacion',
+			'fecha_creacion' => 'Fecha de Creación',
 			'fecha_sesion_actual' => 'Fecha Sesion Actual',
 			'fecha_ultima_sesion' => 'Fecha Ultima Sesion',
 			'estado' => 'Estado',
@@ -108,7 +113,7 @@ class Usuarios extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('cedula',$this->cedula,true);
+		$criteria->compare('cedula',$this->cedula);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('nombres',$this->nombres,true);
 		$criteria->compare('apellidos',$this->apellidos,true);

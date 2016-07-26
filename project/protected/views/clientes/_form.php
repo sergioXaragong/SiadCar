@@ -19,7 +19,7 @@
 						<div class="col-xs-12">
 							<div class="form__section">
 								<label class="form__label">Identificación:</label>
-								<?php echo $form->textField($modelUser,'cedula',array('maxlength'=>155,'class'=>'form__input','required'=>true)); ?>
+								<?php echo $form->textField($modelUser,'cedula',array('maxlength'=>155,'class'=>'form__input input__number','required'=>true)); ?>
 						  	</div>
 						</div>
 						<div class="col-sm-6">
@@ -82,7 +82,7 @@
 						<div class="col-sm-6">
 							<div class="form__section">
 								<label class="form__label">Celular:</label>
-								<?php echo $form->telField($modelClient,'celular',array('maxlength'=>15,'class'=>'form__input')); ?>
+								<?php echo $form->telField($modelClient,'celular',array('maxlength'=>15,'class'=>'form__input input__number')); ?>
 						  	</div>
 						</div>
 					</div>

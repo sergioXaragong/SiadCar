@@ -19,7 +19,7 @@
 						<div class="col-sm-6 col-xs-12">
 							<div class="form__section">
 								<label class="form__label">Placas:</label>
-								<input type="text" name="Vehiculos[placas]" id="Vehiculos__placas" data-load__info="<?php echo $this->createUrl('vehiculos/get_info') ?>" class="form__input" required <?php echo (isset($vehiculo))?'readonly disabled':''; ?> value="<?php echo (isset($vehiculo))?$model->vehiculo0->placas:''; ?>" >
+								<input type="text" name="Vehiculos[placas]" id="Vehiculos__placas" data-load__info="<?php echo $this->createUrl('vehiculos/get_info') ?>" class="form__input input__mask" required <?php echo (isset($vehiculo))?'readonly disabled':''; ?> value="<?php echo (isset($vehiculo))?$model->vehiculo0->placas:''; ?>" data-mask='aaa-999'>
 								<?php echo $form->hiddenField($model,'vehiculo',array('required'=>true)); ?>
 						  	</div>
 						  	<div id="ingresos__go__add" style="<?php echo (isset($vehiculo))?'display:none;':''; ?>">
@@ -70,7 +70,7 @@
 						<div class="col-sm-6">
 							<div class="form__section">
 								<label class="form__label">Kilometraje:</label>
-								<?php echo $form->textField($model,'kilmetraje',array('class'=>'form__input','required'=>true)); ?>
+								<?php echo $form->textField($model,'kilmetraje',array('class'=>'form__input input__number','required'=>true)); ?>
 						  	</div>
 						</div>
 					</div>

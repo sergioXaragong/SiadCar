@@ -68,7 +68,7 @@ class Clientes extends CActiveRecord
 			'id' => 'ID',
 			'usuario' => 'Usuario',
 			'ciudad' => 'Ciudad',
-			'direccion' => 'Direccion',
+			'direccion' => 'Dirección',
 			'celular' => 'Celular',
 			'observaciones' => 'Observaciones',
 			'estado' => 'Estado',

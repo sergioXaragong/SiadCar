@@ -5,7 +5,6 @@ jQuery(document).ready(function($) {
         $($(this).attr('data-collapse')).removeClass('active');
     });
     $('.show__collapse').on('click', function(event) {
-        //event.preventDefault();
         $(this).hover();
     });
 
@@ -25,6 +24,11 @@ jQuery(document).ready(function($) {
             $menuItem.addClass('submenuact');
             $menuItem.find('.submenu').slideDown('slow');
         }
+    });
+
+    $(document).on('keypress', '.input__number', function(event){
+        if(!((event.which <= 57 && event.which >= 48) || event.which == 8))
+            event.preventDefault();
     });
 
     $('.select__depend').each(function(index, el) {

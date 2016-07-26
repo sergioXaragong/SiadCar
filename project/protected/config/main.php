@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'SIADCAR',
-	'language'=>'es_CO',
+	'language'=>'es',
 	'sourceLanguage'=>'es_CO',
 
 	// preloading 'log' component

@@ -24,7 +24,7 @@
 				                <th>Placas</th>
 				                <th>Fecha Creación</th>
 				                <th>Estado</th>
-				                <th>Opciones</th>
+				                <th width="80">Opciones</th>
 				            </tr>
 				        </thead>
 				        <tfoot>

@@ -121,8 +121,12 @@ class UsuariosController extends Controller{
 		            	$response['status'] = 'success';
 		            }
 		            else{
-		            	$response['title'] = 'Error validación';
-		            	$response['message'] = $model->getErrors();
+		            	$errors = $model->getErrors();
+						$keyErrors = array_keys($model->getErrors());
+						$nameInput = Tools::strToUpper(CHtml::encode($model->getAttributeLabel($keyErrors[0])));
+
+						$response['title'] = 'Error validación';
+		            	$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
 		            }
 	            }
 	            else{
@@ -252,8 +256,12 @@ class UsuariosController extends Controller{
 		            	$response['status'] = 'success';
 		            }
 		            else{
-		            	$response['title'] = 'Error validación';
-		            	$response['message'] = $model->getErrors();
+		            	$errors = $model->getErrors();
+						$keyErrors = array_keys($model->getErrors());
+						$nameInput = Tools::strToUpper(CHtml::encode($model->getAttributeLabel($keyErrors[0])));
+
+						$response['title'] = 'Error validación';
+		            	$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
 		            }
 	            }
 	            else{

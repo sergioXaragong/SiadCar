@@ -19,6 +19,10 @@ class Tools extends CApplicationComponent{
 		return strtr(strtoupper($cadena),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 	}
 
+	public static function strBefore($this, $inthat){
+        return substr($inthat, 0, strpos($inthat, $this));
+    }
+
 	public static function dateIsValid($value, $format='d/m/Y h:i A'){
 		date_default_timezone_set('America/Bogota');
 		

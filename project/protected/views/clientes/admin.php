@@ -51,7 +51,7 @@
 				        			<td><?php echo $user->apellidos; ?></td>
 				        			<td><?php echo $user->cedula; ?></td>
 				        			<td><?php echo $client->celular; ?></td>
-				        			<td><?php echo $user->email; ?></td>
+				        			<td><?php echo Tools::strBefore('@', $user->email); ?>@...</td>
 				        			<td><?php echo $user->fecha_creacion; ?></td>
 				        			<td>
 				        				<?php if($client->estado == 1){ ?>

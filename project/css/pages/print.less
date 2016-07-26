@@ -10,11 +10,11 @@
 	}
 	.print__head{
 		td{
-			vertical-align: top;
+			vertical-align: middle;
 		}
 	}
 	.print__logo{
-		width: 150px;
+		width: 140px;
 		img{
 			height: auto;
 			width: 100%;
@@ -94,7 +94,8 @@
 
 @media print {
 	@page {
-		size: A4 landscape; 
+		margin: 1cm 1cm;
+		size: A4;
 	}
 
 
@@ -111,6 +112,6 @@
 		display: none;
 	}
 	.page__print{
-		padding: 0px @padding*3;
+		padding: 0px;
 	}
 }

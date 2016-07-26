@@ -86,13 +86,13 @@ class Vehiculos extends CActiveRecord
 			'referencia' => 'Referencia',
 			'modelo' => 'Modelo',
 			'placas' => 'Placas',
-			'tipo_combustible' => 'Tipo Combustible',
-			'numero_motor' => 'Numero Motor',
-			'numero_chasis' => 'Numero Chasis',
+			'tipo_combustible' => 'Tipo de Combustible',
+			'numero_motor' => 'Número de Motor',
+			'numero_chasis' => 'Número de Chasis',
 			'color' => 'Color',
-			'descripcion' => 'Descripcion',
+			'descripcion' => 'Descripción',
 			'observaciones' => 'Observaciones',
-			'fecha_creacion' => 'Fecha Creacion',
+			'fecha_creacion' => 'Fecha de Creación',
 			'estado' => 'Estado',
 		);
 	}

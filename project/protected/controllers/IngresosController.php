@@ -109,9 +109,10 @@ class IngresosController extends Controller{
 				else{
 	            	$errors = $model->getErrors();
 					$keyErrors = array_keys($model->getErrors());
+					$nameInput = Tools::strToUpper(CHtml::encode($model->getAttributeLabel($keyErrors[0])));
 
 					$response['title'] = 'Error validación';
-	            	$response['message'] = $keyErrors[0].': '.$errors[$keyErrors[0]][0];
+					$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
 				}
 			}
 			else{
@@ -146,9 +147,9 @@ class IngresosController extends Controller{
 		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/controllers/ingresos.js',CClientScript::POS_END);
 
 		if(Yii::app()->user->getState("_rolUser") == 3)
-			$ingresos = RegistrosIngreso::model()->findAllByAttributes(array('estado'=>3));
+			$ingresos = RegistrosIngreso::model()->findAllByAttributes(array('estado'=>3), array('order'=>'t.fecha DESC'));
 		if(Tools::hasPermission(4))
-			$ingresos = RegistrosIngreso::model()->findAll(array('condition'=>'t.estado != 2'));
+			$ingresos = RegistrosIngreso::model()->findAll(array('condition'=>'t.estado != 2','order'=>'t.fecha DESC'));
 
 		$this->render('admin', array(
 			'ingresos'=>$ingresos
@@ -225,9 +226,10 @@ class IngresosController extends Controller{
 				else{
 	            	$errors = $model->getErrors();
 					$keyErrors = array_keys($model->getErrors());
+					$nameInput = Tools::strToUpper(CHtml::encode($model->getAttributeLabel($keyErrors[0])));
 
 					$response['title'] = 'Error validación';
-	            	$response['message'] = $keyErrors[0].': '.$errors[$keyErrors[0]][0];
+					$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
 				}
 			}
 			else{
@@ -361,9 +363,10 @@ class IngresosController extends Controller{
 					else{
 		            	$errors = $model->getErrors();
 						$keyErrors = array_keys($model->getErrors());
+						$nameInput = Tools::strToUpper(CHtml::encode($model->getAttributeLabel($keyErrors[0])));
 
 						$response['title'] = 'Error validación';
-		            	$response['message'] = $keyErrors[0].': '.$errors[$keyErrors[0]][0];
+						$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
 					}
 				}
 				else{
@@ -438,9 +441,10 @@ class IngresosController extends Controller{
 						else{
 			            	$errors = $model->getErrors();
 							$keyErrors = array_keys($model->getErrors());
+							$nameInput = Tools::strToUpper(CHtml::encode($model->getAttributeLabel($keyErrors[0])));
 
 							$response['title'] = 'Error validación';
-			            	$response['message'] = $keyErrors[0].': '.$errors[$keyErrors[0]][0];
+							$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
 						}
 					}
 					else{

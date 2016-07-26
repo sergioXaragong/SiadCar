@@ -70,12 +70,12 @@ class RegistrosIngreso extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'vehiculo' => 'Vehiculo',
+			'vehiculo' => 'Vehículo',
 			'tipo' => 'Tipo',
-			'observaciones_cliente' => 'Observaciones Cliente',
-			'kilmetraje' => 'Kilmetraje',
+			'observaciones_cliente' => 'Observaciones del cliente',
+			'kilmetraje' => 'Kilometraje',
 			'desperfectos' => 'Desperfectos',
-			'elementos' => 'Elementos',
+			'elementos' => 'Elementos en el auto',
 			'observaciones' => 'Observaciones',
 			'fecha' => 'Fecha',
 			'recibio' => 'Recibio',

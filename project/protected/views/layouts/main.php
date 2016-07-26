@@ -62,6 +62,8 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/ckeditor/config.js"></script>
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/chart/Chart.min.js"></script>
+    
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/jquery.maskedinput-1.2.2.js"></script>
 
     
     <!-- Scripts SiadCar -->

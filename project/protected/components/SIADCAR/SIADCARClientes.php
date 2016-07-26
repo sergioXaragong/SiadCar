@@ -75,19 +75,31 @@ class SIADCARClientes extends CApplicationComponent
 			            	$return['cliente'] = $modelClient;
 						}
 						else{
+							$errors = $modelClient->getErrors();
+							$keyErrors = array_keys($modelClient->getErrors());
+							$nameInput = Tools::strToUpper(CHtml::encode($modelClient->getAttributeLabel($keyErrors[0])));
+
 							$response['title'] = 'Error validación';
-            				$response['message'] = $modelClient->getErrors();
+							$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
 						}
 					}
 					else{
+						$errors = $modelUser->getErrors();
+						$keyErrors = array_keys($modelUser->getErrors());
+						$nameInput = Tools::strToUpper(CHtml::encode($modelUser->getAttributeLabel($keyErrors[0])));
+
 						$response['title'] = 'Error validación';
-            			$response['message'] = $modelUser->getErrors();
+						$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
 					}
 				}
             }
             else{
-            	$response['title'] = 'Error validación';
-            	$response['message'] = $modelUser->getErrors();
+            	$errors = $modelUser->getErrors();
+				$keyErrors = array_keys($modelUser->getErrors());
+				$nameInput = Tools::strToUpper(CHtml::encode($modelUser->getAttributeLabel($keyErrors[0])));
+
+				$response['title'] = 'Error validación';
+				$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
             }
 		}
 

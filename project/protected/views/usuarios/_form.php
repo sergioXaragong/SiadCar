@@ -31,7 +31,7 @@
 						<div class="col-sm-6">
 							<div class="form__section">
 								<label class="form__label">Identificación:</label>
-								<?php echo $form->textField($model,'cedula',array('maxlength'=>155,'class'=>'form__input','required'=>true)); ?>
+								<?php echo $form->textField($model,'cedula',array('maxlength'=>155,'class'=>'form__input input__number','required'=>true)); ?>
 						  	</div>
 						</div>
 					</div>
@@ -39,7 +39,7 @@
 						<div class="col-sm-6">
 							<div class="form__section">
 								<label class="form__label">Teléfono:</label>
-								<?php echo $form->telField($model,'telefono',array('maxlength'=>65,'class'=>'form__input','required'=>true)); ?>
+								<?php echo $form->telField($model,'telefono',array('maxlength'=>65,'class'=>'form__input input__number','required'=>true)); ?>
 						  	</div>
 						</div>
 						<div class="col-sm-6">

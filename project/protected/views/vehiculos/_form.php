@@ -19,7 +19,7 @@
 						<div class="col-xs-12">
 							<div class="form__section">
 								<label class="form__label">Identificación:</label>
-								<?php echo $form->textField($modelUser,'cedula',array('maxlength'=>155,'class'=>'form__input','required'=>true,'data-ajax__link'=>$this->createUrl('clientes/get_cliente'))); ?>
+								<?php echo $form->textField($modelUser,'cedula',array('maxlength'=>155,'class'=>'form__input input__number','required'=>true,'data-ajax__link'=>$this->createUrl('clientes/get_cliente'))); ?>
 						  	</div>
 						</div>
 						<div class="col-sm-6">
@@ -109,13 +109,13 @@
 						<div class="col-sm-3">
 							<div class="form__section">
 								<label class="form__label">Modelo:</label>
-								<?php echo $form->numberField($model,'modelo',array('maxlength'=>11,'class'=>'form__input','required'=>true)); ?>
+								<?php echo $form->textField($model,'modelo',array('maxlength'=>4,'class'=>'form__input input__number','required'=>true)); ?>
 						  	</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="form__section">
 								<label class="form__label">Placas:</label>
-								<?php echo $form->textField($model,'placas',array('maxlength'=>10,'class'=>'form__input','required'=>true)); ?>
+								<?php echo $form->textField($model,'placas',array('maxlength'=>10,'class'=>'form__input input__mask','required'=>true,'data-mask'=>'aaa-999')); ?>
 						  	</div>
 						</div>
 						<div class="col-sm-5">

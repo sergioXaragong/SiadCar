@@ -5,7 +5,7 @@
 <div class="page__print">
 	<table class="print__head">
 		<tr>
-			<td class="print__logo"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" alt="Siadcar"></td>
+			<td class="print__logo"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo__tma.png" alt="Siadcar"></td>
 			<td class="print__info__company">
 				<p><strong> TECNO MECÁNICA AUTOMOTRIZ </strong></p>
 				<p><strong> Transversal 29 No. 16 - 19 </strong></p>

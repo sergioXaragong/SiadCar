@@ -83,7 +83,7 @@ class VehiculosController extends Controller{
 		$load = Yii::app()->getClientScript();
 		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/controllers/vehiculos.js',CClientScript::POS_END);
 
-		$vehiculos = Vehiculos::model()->findAll(array('condition'=>'t.estado != 2'));
+		$vehiculos = Vehiculos::model()->findAll(array('condition'=>'t.estado != 2','order'=>'t.fecha_creacion DESC'));
 
 		$this->render('admin', array(
 			'vehiculos'=>$vehiculos
@@ -239,8 +239,12 @@ class VehiculosController extends Controller{
 	            		$response['message'] = 'Los datos del vehículo con placas '.$vehiculo->placas.' se edito con exito.';
 				}
 				else{
+					$errors = $vehiculo->getErrors();
+					$keyErrors = array_keys($vehiculo->getErrors());
+					$nameInput = Tools::strToUpper(CHtml::encode($vehiculo->getAttributeLabel($keyErrors[0])));
+
 					$response['title'] = 'Error validación';
-            		$response['message'] = $vehiculo->getErrors();
+					$response['message'] = $nameInput.': '.$errors[$keyErrors[0]][0];
 				}
 			}
 		}
