@@ -11,6 +11,21 @@
           </li>
           
           
+          <?php if(Tools::hasPermission(1)){ ?>
+            <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'usuarios')?'active':''; ?>">
+              <p class="item row middle-xs">
+                <span class="item__icon"><i class="fa fa-user"></i></span>
+                <span>Usuarios</span>
+                <span class="item__icon icon__small"><i class="fa fa-angle-down"></i></span>
+              </p>
+              <ul class="submenu">
+                <li><a href="<?php echo $this->createUrl('usuarios/admin') ?>">Listar</a></li>
+                <li><a href="<?php echo $this->createUrl('usuarios/create') ?>">Agregar</a></li>
+              </ul>
+            </li>
+          <?php } ?>
+          
+          
           <?php if(Tools::hasPermission(2)){ ?>
             <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'clientes')?'active':''; ?>">
               <p class="item row middle-xs">
@@ -53,21 +68,6 @@
                 <?php if(Tools::hasPermission(4)){ ?>
                   <li><a href="<?php echo $this->createUrl('ingresos/create') ?>">Agregar</a></li>
                 <?php } ?>
-              </ul>
-            </li>
-          <?php } ?>
-          
-          
-          <?php if(Tools::hasPermission(1)){ ?>
-            <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'usuarios')?'active':''; ?>">
-              <p class="item row middle-xs">
-                <span class="item__icon"><i class="fa fa-user"></i></span>
-                <span>Usuarios</span>
-                <span class="item__icon icon__small"><i class="fa fa-angle-down"></i></span>
-              </p>
-              <ul class="submenu">
-                <li><a href="<?php echo $this->createUrl('usuarios/admin') ?>">Listar</a></li>
-                <li><a href="<?php echo $this->createUrl('usuarios/create') ?>">Agregar</a></li>
               </ul>
             </li>
           <?php } ?>

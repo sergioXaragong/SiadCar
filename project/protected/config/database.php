@@ -7,6 +7,7 @@ return array(
 	
 	//'connectionString' => 'mysql:host=localhost;dbname=univ_siadcar_test',
 	'connectionString' => 'mysql:host=localhost;dbname=univ_siadcar',
+	
 	'emulatePrepare' => true,
 	'username' => 'root',
 	'password' => '',

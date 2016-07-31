@@ -68,7 +68,7 @@ class SIADCARClientes extends CApplicationComponent
 					if($modelUser->save()){
 						$modelClient->usuario = $modelUser->id;
 						if($modelClient->save()){
-			            	$response['title'] = 'Echo';
+			            	$response['title'] = 'Hecho';
 			            	$response['message'] = 'El cliente '.$modelUser->nombres.' '.$modelUser->apellidos.' se agrego con exito en el sistema.';
 			            	$response['status'] = 'success';
 

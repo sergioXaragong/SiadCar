@@ -1,6 +1,6 @@
       <div id="top-bar">
         <div class="row between-xs middle-xs">
-          <div class="top-bar__left container-content"><a href="index.html"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo__horizontal.png" alt="siadcar"/></a></div>
+          <div class="top-bar__left container-content"><a href="<?php echo Yii::app()->homeUrl; ?>"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo__horizontal.png" alt="siadcar"/></a></div>
           <div class="top-bar__right container-content">
             <ul class="row middle-xs">
               <li data-collapse="#collapse__go__profile" class="user__info show__collapse">

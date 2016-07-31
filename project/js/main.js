@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
         $link = $(this);
         if($(this).attr('data-modal') == 'logout-modal'){
             $.modalConfirm(
-                'Logout Confirmation',
+                '¿Cerrar Sesión?',
                 '¿Seguro que desea cerrar la sesión de su sistema SIADCAR?',
                 'warning',
                 function(){
