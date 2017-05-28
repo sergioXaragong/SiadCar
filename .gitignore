@@ -14,3 +14,5 @@ project/protected/data/*.db
 project/assets/*
 project/assets/**/*
 project/themes/classic/views/
+
+.idea/**/*

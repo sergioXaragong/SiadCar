@@ -19,6 +19,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 
+        'application.vendors.JWT.*',
 		'application.components.SIADCAR.*',
 	),
 
@@ -31,7 +32,8 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		
+
+        'api',
 	),
 
 	// application components
