@@ -55,6 +55,12 @@ return array(
 				'gii/<controller:\w+>'=>'gii/<controller>',
 				'gii/<controller:\w+>/<action:\w+>'=>'gii/<controller>/<action>',
 
+                'api'=>'api',
+                'api/<action:\w+>'=>'api/default/<action>',
+                'api/<controller:\w+>/<id:\d+>'=>'api/<controller>/view',
+                'api/<controller:\w+>/<action:\w+>/<id:\d+>'=>'api/<controller>/<action>',
+                'api/<controller:\w+>/<action:\w+>'=>'api/<controller>/<action>',
+
 				'<action:\w+>'=>'site/<action>',
 
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
@@ -95,5 +101,7 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'arag_ong@yahoo.es',
+
+        'jwtKey'=>'SiadCarJwt',
 	),
 );

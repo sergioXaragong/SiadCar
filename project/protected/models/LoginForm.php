@@ -71,4 +71,28 @@ class LoginForm extends CFormModel
 		else
 			return false;
 	}
+
+    public function tokenAuthenticate(){
+        if($this->_identity===null)
+        {
+            $this->_identity=new UserIdentity($this->username,$this->password);
+            $this->_identity->authenticate();
+        }
+        if($this->_identity->errorCode===UserIdentity::ERROR_NONE){
+            $payload = [
+                'sub' => $this->_identity->userAuthenticate->id,
+                'iat' => time(),
+                'exp' => time() + (2 * 7 * 24 * 60 * 60)
+            ];
+            $secretKey = base64_decode(Yii::app()->params['jwtKey']);
+            $jwt = JWT::encode(
+                $payload,
+                $secretKey
+            );
+
+            return array('token'=>$jwt);
+        }
+        else
+            return null;
+    }
 }

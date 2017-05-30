@@ -7,6 +7,9 @@
  */
 class UserIdentity extends CUserIdentity
 {
+    public $userAuthenticate = null;
+
+
 	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
@@ -42,6 +45,8 @@ class UserIdentity extends CUserIdentity
 			$user->fecha_ultima_sesion = $user->fecha_sesion_actual;
 			$user->fecha_sesion_actual = new CDbExpression('now()');
 			$user->save();
+
+			$this->userAuthenticate = $user;
 		}
 		return !$this->errorCode;
 	}

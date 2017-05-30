@@ -70,4 +70,46 @@ class Tools extends CApplicationComponent{
 		
 		return $_items;
 	}
+
+
+    public static function tokenAuthentication(){
+        header("Access-Control-Allow-Headers: Authorization, content-type");
+
+        if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
+            return true;
+
+        $alumno = Tools::tokenAuthAlumno();
+        if($alumno != null)
+            return true;
+
+        return false;
+    }
+    public static function tokenAuthAlumno(){
+        $payload = Tools::parse_token();
+
+        if($payload != null){
+            $alumno = Alumnos::model()->findByAttributes(array('id'=>$payload['sub']));
+            $grupo = $alumno->getGroup();
+
+            if($alumno != null && $alumno->user0->estado == 1 && $grupo)
+                return $alumno;
+        }
+
+        return null;
+    }
+    public static function parse_token(){
+        $headers = getallheaders();
+        if(!isset($headers['Authorization']))
+            return null;
+        $token = explode(' ', $headers['Authorization']);
+        $secretKey = base64_decode(Yii::app()->params['jwtKey']);
+
+        try{
+            $payload = (array) JWT::decode($token[1], $secretKey, array('HS256'));
+        } catch (Exception $e){
+            $payload = null;
+        }
+
+        return $payload;
+    }
 }
