@@ -10,7 +10,9 @@
 			<p>
 				<?php if($code == 403){
 					echo "No tiene autorización para realizar esta accion, es posible que te hayan cancelado los permisos.";
-				} else{
+				} elseif($code == 500){
+                    echo CHtml::encode($message);
+                } else{
 					echo "No fue posible encontrar la página solicitada, es posible que haya sido eliminada o que el enlace este fallando.";
 				}?>
 			</p>

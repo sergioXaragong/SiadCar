@@ -25,8 +25,7 @@ class Test extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('request', 'required'),
-			array('request', 'length', 'max'=>250),
+			array('request', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, request', 'safe', 'on'=>'search'),

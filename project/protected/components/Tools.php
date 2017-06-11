@@ -19,8 +19,8 @@ class Tools extends CApplicationComponent{
 		return strtr(strtoupper($cadena),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 	}
 
-	public static function strBefore($this, $inthat){
-        return substr($inthat, 0, strpos($inthat, $this));
+	public static function strBefore($that, $inthat){
+        return substr($inthat, 0, strpos($inthat, $that));
     }
 
 	public static function dateIsValid($value, $format='d/m/Y h:i A'){
@@ -78,21 +78,20 @@ class Tools extends CApplicationComponent{
         if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
             return true;
 
-        $alumno = Tools::tokenAuthAlumno();
-        if($alumno != null)
+        $usuario = Tools::tokenAuthUser();
+        if($usuario != null)
             return true;
 
         return false;
     }
-    public static function tokenAuthAlumno(){
+    public static function tokenAuthUser(){
         $payload = Tools::parse_token();
 
         if($payload != null){
-            $alumno = Alumnos::model()->findByAttributes(array('id'=>$payload['sub']));
-            $grupo = $alumno->getGroup();
+            $usuario = Usuarios::model()->findByAttributes(array('id'=>$payload['sub']));
 
-            if($alumno != null && $alumno->user0->estado == 1 && $grupo)
-                return $alumno;
+            if($usuario != null && $usuario->estado == 1)
+                return $usuario;
         }
 
         return null;
@@ -105,7 +104,7 @@ class Tools extends CApplicationComponent{
         $secretKey = base64_decode(Yii::app()->params['jwtKey']);
 
         try{
-            $payload = (array) JWT::decode($token[1], $secretKey, array('HS256'));
+            $payload = (array) JWT::decode($token[0], $secretKey, array('HS256'));
         } catch (Exception $e){
             $payload = null;
         }

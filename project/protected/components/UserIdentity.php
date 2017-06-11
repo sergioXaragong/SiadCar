@@ -50,4 +50,29 @@ class UserIdentity extends CUserIdentity
 		}
 		return !$this->errorCode;
 	}
+
+    public function authenticateApp()
+    {
+        $user = Usuarios::model()->findByAttributes(array(
+            'cedula'=>$this->username,
+            'estado'=>1
+        ), array('condition'=>'t.rol != 1 AND t.rol != 4'));
+
+        if(!is_object($user))
+            $this->errorCode=self::ERROR_USERNAME_INVALID;
+        //else if($user->password!==$this->password)
+        else if(crypt($this->password, $user->password) != $user->password)
+            $this->errorCode=self::ERROR_PASSWORD_INVALID;
+        else{
+            $this->errorCode=self::ERROR_NONE;
+
+            //Registramos el acceso
+            $user->fecha_ultima_sesion = $user->fecha_sesion_actual;
+            $user->fecha_sesion_actual = new CDbExpression('now()');
+            $user->save();
+
+            $this->userAuthenticate = $user;
+        }
+        return !$this->errorCode;
+    }
 }
