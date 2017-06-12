@@ -11,7 +11,7 @@ class DefaultController extends Controller
             ),
             array('allow',
                 'actions'=>array(
-
+                    'get_user'
                 ),
                 'expression'=>'Tools::tokenAuthentication()',
             ),
@@ -48,5 +48,20 @@ class DefaultController extends Controller
 
             $this->JsonResponse(array('error'=>'Los datos enviados no son correctos.'), 401);
         }
+    }
+
+    public function actionGet_user(){
+        $user = Tools::tokenAuthUser();
+        if($user != null){
+            $response = array(
+                'id'=>$user->id,
+                'nombre'=>$user->nombres.' '.$user->apellidos,
+                'rol'=>$user->rol
+            );
+            $this->JsonResponse($response);
+        }
+        else
+            $this->JsonResponse(array('error'=>'Finalizo la sesión.'), 401);
+        return;
     }
 }

@@ -17,7 +17,9 @@ class IngresosController extends Controller {
             array('allow',
                 'actions'=>array(
                     'get_data_form',
-                    'create'
+                    'create',
+
+                    'get_ingresos_cliente'
                 ),
                 'expression'=>'Tools::tokenAuthentication()',
             ),
@@ -30,8 +32,10 @@ class IngresosController extends Controller {
     public function actionGet_data_form(){
         $response = array(
             'tipos'=>array(),
-            'elementos'=>array()
+            'elementos'=>array(),
+            'mecanicos'=>array()
         );
+        $user = Tools::tokenAuthUser();
         $tipos = TiposIngreso::model()->findAll(array('order'=>'t.nombre ASC'));
         foreach ($tipos as $key=>$tipo){
             $response['tipos'][] = array(
@@ -45,6 +49,15 @@ class IngresosController extends Controller {
                 'id'=>$elemento->id,
                 'nombre'=>$elemento->nombre
             );
+        }
+        if($user->rol != 3){
+            $mecanicos = Usuarios::model()->findAllByAttributes(array('rol'=>3, 'estado'=>1));
+            foreach ($mecanicos as $key=>$mecanico){
+                $response['mecanicos'][] = array(
+                    'id'=>$mecanico->id,
+                    'nombre'=>$mecanico->nombres.' '.$mecanico->apellidos
+                );
+            }
         }
 
         $this->JsonResponse($response);
@@ -103,5 +116,56 @@ class IngresosController extends Controller {
         if($error)
             $this->JsonResponse(array(), 501);
         return;
+    }
+
+    public function actionGet_ingresos_cliente(){
+        $ingresos = RegistrosIngreso::model()->findAll(array(
+            'condition'=>'t.estado != 2',
+            'order'=>'t.fecha DESC'
+        ));
+        $user = Tools::tokenAuthUser();
+        if($user != null){
+            $lista = array();
+            foreach ($ingresos as $key=>$ingreso){
+                if($ingreso->vehiculo0->propietario == $user->id)
+                    $lista[] = $ingreso;
+            }
+
+            $response = array('items'=>array());
+            foreach ($lista as $key=>$item){
+                $response['items'][] = $this->serializeIngreso($item);
+            }
+
+            $this->JsonResponse($response);
+        }
+        else
+            $this->JsonResponse(array('error'=>true), 401);
+
+        return;
+    }
+
+    /**********************************************************/
+    private function serializeIngreso(RegistrosIngreso $ingreso){
+        $vehiculo = $ingreso->vehiculo0;
+        $fechaIngreso = new DateTime($ingreso->fecha);
+        if($ingreso->estado == 1)
+            $estado = "Entregado";
+        elseif($ingreso->estado == 3)
+            $estado = "En revisión";
+        elseif($ingreso->estado == 4)
+            $estado = "Listo";
+        else
+            $estado = "En espera";
+
+        $item = array(
+            'id'=>$ingreso->id,
+            'vehiculo'=>$vehiculo->placas,
+            'marca'=>$vehiculo->marca0->nombre,
+            'tipo'=>$ingreso->tipo0->nombre,
+            'fecha'=>$fechaIngreso->format('d \d\e F Y H:i:s'),
+            'estado'=>$estado
+        );
+
+        return $item;
     }
 }
