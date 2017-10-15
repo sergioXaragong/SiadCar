@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
 		$passNew = $.trim($('#pass__new').val());
 		$pass2 = $.trim($('#pass__new2').val());
 
-		if($passCurrent == '' || $passNew == '' || $pass2 != '')
+		if($passCurrent == '' || $passNew == '' || $pass2 == '')
 			$.showNotify('Error', 'Debe completar todos los campos.', 'error');
 		else if($passNew != $pass2)
 			$.showNotify('Error', 'Las contraseñas no coinciden!!!', 'error');

@@ -127,7 +127,7 @@ class IngresosController extends Controller {
         if($user != null){
             $lista = array();
             foreach ($ingresos as $key=>$ingreso){
-                if($ingreso->vehiculo0->propietario == $user->id)
+                if($ingreso->vehiculo0->propietario0->usuario == $user->id)
                     $lista[] = $ingreso;
             }
 

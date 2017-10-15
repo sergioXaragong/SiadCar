@@ -69,7 +69,7 @@ class SIADCARClientes extends CApplicationComponent
 						$modelClient->usuario = $modelUser->id;
 						if($modelClient->save()){
 			            	$response['title'] = 'Hecho';
-			            	$response['message'] = 'El cliente '.$modelUser->nombres.' '.$modelUser->apellidos.' se agrego con exito en el sistema.';
+			            	$response['message'] = 'El cliente '.$modelUser->nombres.' '.$modelUser->apellidos.' se agrego con exito en el sistema. Estos son sus datos de acceso mediante la App Movil. <br> <p><strong>Usuario:</strong> '.$modelUser->cedula.'</p><p><strong>Password:</strong> '.$passDefault.'</p>';
 			            	$response['status'] = 'success';
 
 			            	$return['cliente'] = $modelClient;

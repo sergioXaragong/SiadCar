@@ -10,5 +10,7 @@ RedirectMatch 403 /\..*$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
 # otherwise forward it to index.php
 RewriteRule . index.php

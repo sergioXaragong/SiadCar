@@ -31,6 +31,7 @@ class ClientesController extends Controller{
 					'create', 'create__ajax',
 					'admin',
 					'view',
+					'reset_password',
 					'update', 'update__ajax',
 					'delete_client'
 				),
@@ -200,6 +201,34 @@ class ClientesController extends Controller{
 		else
             throw new CHttpException(404,'The requested page does not exist.');			
 	}
+
+	public function actionReset_password($id){
+		if(Yii::app()->getRequest()->getIsAjaxRequest()){
+			$response = array('status'=>'error');
+
+			$modelClient = $this->loadModel($id);
+			$model = $modelClient->usuario0;
+			$passDefault = 'siadcar_'.rand(100, 1000);
+			$model->password = Tools::crypt($passDefault);
+
+			if($model->save()){
+				$response['title'] = 'Hecho';
+            	//$response['message'] = 'Al usuario '.$model->nombres.' se le cambio la contraseña con exito. Estos son sus datos de acceso. <br> <p><strong>Usuario:</strong> '.$model->cedula.'</p><p><strong>Password:</strong> '.$passDefault.'</p>';
+            	$response['message'] = 'El cliente '.$model->nombres.' '.$model->apellidos.' se agrego con exito en el sistema. Estos son sus datos de acceso mediante la App Movil. <br> <p><strong>Usuario:</strong> '.$model->cedula.'</p><p><strong>Password:</strong> '.$passDefault.'</p>';
+            	$response['status'] = 'success';
+			}
+			else{
+				$response['title'] = 'Error en la operacón';
+            	$response['message'] = 'Ocurrio un error durante el proceso de asignar una nueva contraseña. Informe al desarrollador e intente mas tarde.';
+			}
+
+			echo CJSON::encode($response);
+		}
+		else
+            throw new CHttpException(404,'The requested page does not exist.');
+	}
+
+
 	/********* FIN MODIFICACION CLIENTES *********/
 
 	public function actionDelete_client($id){

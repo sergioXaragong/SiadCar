@@ -3910,3 +3910,68 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/university/TC/SiadCar/project/api/get_user
 ---
+2017/06/20 19:13:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\university\TC\SiadCar\project\protected\controllers\ClientesController.php:227
+Stack trace:
+#0 [internal function]: ClientesController->actionReset_password('50')
+#1 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#2 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientesController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CWebApplication.php(282): CController->run('reset_password')
+#12 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('clientes/reset_...')
+#13 C:\xampp\htdocs\university\TC\SiadCar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\university\TC\SiadCar\project\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/university/TC/SiadCar/project/clientes/reset_password/50
+HTTP_REFERER=http://localhost/university/TC/SiadCar/project/clientes/admin
+---
+2017/06/20 19:13:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\university\TC\SiadCar\project\protected\controllers\ClientesController.php:227
+Stack trace:
+#0 [internal function]: ClientesController->actionReset_password('50')
+#1 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#2 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientesController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CWebApplication.php(282): CController->run('reset_password')
+#12 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('clientes/reset_...')
+#13 C:\xampp\htdocs\university\TC\SiadCar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\university\TC\SiadCar\project\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/university/TC/SiadCar/project/clientes/reset_password/50
+HTTP_REFERER=http://localhost/university/TC/SiadCar/project/clientes/admin
+---
+2017/06/20 19:15:19 [error] [exception.CException] exception 'CException' with message 'La propiedad "Clientes"."password" no se encuentra definida.' in C:\xampp\htdocs\university\TC\SiadCar\project\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\university\TC\SiadCar\project\framework\db\ar\CActiveRecord.php(161): CComponent->__set('password', '$2a$07$esgazRO4...')
+#1 C:\xampp\htdocs\university\TC\SiadCar\project\protected\controllers\ClientesController.php(211): CActiveRecord->__set('password', '$2a$07$esgazRO4...')
+#2 [internal function]: ClientesController->actionReset_password('50')
+#3 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#4 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CWebApplication.php(282): CController->run('reset_password')
+#14 C:\xampp\htdocs\university\TC\SiadCar\project\framework\web\CWebApplication.php(141): CWebApplication->runController('clientes/reset_...')
+#15 C:\xampp\htdocs\university\TC\SiadCar\project\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\university\TC\SiadCar\project\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/university/TC/SiadCar/project/clientes/reset_password/50
+HTTP_REFERER=http://localhost/university/TC/SiadCar/project/clientes/admin
+---

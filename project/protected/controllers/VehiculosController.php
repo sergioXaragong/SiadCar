@@ -85,8 +85,15 @@ class VehiculosController extends Controller{
 
 		$vehiculos = Vehiculos::model()->findAll(array('condition'=>'t.estado != 2','order'=>'t.fecha_creacion DESC'));
 
+		$vehiculosReturn = array();
+		foreach ($vehiculos as $key => $vehiculo) {
+			if($vehiculo->propietario0->estado == 1){
+				$vehiculosReturn[] = $vehiculo;
+			}
+		}
+
 		$this->render('admin', array(
-			'vehiculos'=>$vehiculos
+			'vehiculos'=>$vehiculosReturn
 		));
 	}
 

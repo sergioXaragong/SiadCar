@@ -62,18 +62,18 @@ class UserIdentity extends CUserIdentity
             $this->errorCode=self::ERROR_USERNAME_INVALID;
         else{
             $error = false;
-            if($user->rol == 4) {
+            /*if($user->rol == 4) {
                 if ($this->password != $user->password) {
                     $this->errorCode = self::ERROR_PASSWORD_INVALID;
                     $error = true;
                 }
             }
-            else{
+            else{*/
                 if(crypt($this->password, $user->password) != $user->password){
                     $this->errorCode=self::ERROR_PASSWORD_INVALID;
                     $error = true;
                 }
-            }
+            /*}*/
             if(!$error){
                 $this->errorCode=self::ERROR_NONE;
 

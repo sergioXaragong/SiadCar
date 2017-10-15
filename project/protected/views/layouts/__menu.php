@@ -6,7 +6,7 @@
           <li class="menu__item <?php echo (count($path) > 1)?((strtolower($path[0]) == 'index')?'active':''):'active'; ?>">
             <a href="<?php echo Yii::app()->homeUrl; ?>" class="item row middle-xs">
               <span class="item__icon"><i class="fa fa-home"></i></span>
-              <span>Dashboard</span>
+              <span>Panel Principal</span>
             </a>
           </li>
           
@@ -24,6 +24,9 @@
               </ul>
             </li>
           <?php } ?>
+          
+          
+         
           
           
           <?php if(Tools::hasPermission(2)){ ?>
@@ -80,6 +83,17 @@
               </a>
             </li>
           <?php } ?>
+          
+           <li class="menu__item has__submenu <?php echo (strtolower($path[0]) == 'usuarios')?'':''; ?>">
+              <p class="item row middle-xs">
+                <span class="item__icon"><i class="fa fa-book"></i></span>
+                <span>Documentación</span>
+                <span class="item__icon icon__small"><i class="fa fa-angle-down"></i></span>
+              </p>
+              <ul class="submenu">
+                <li><a href="https://drive.google.com/drive/folders/0B1hdptLtrcCmYlpTanN1ZzhMUTQ" target="_blank">Ir a la documentación</a></li>
+              </ul>
+            </li>
 
 
         </ul>

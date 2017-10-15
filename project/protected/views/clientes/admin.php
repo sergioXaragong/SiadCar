@@ -63,6 +63,7 @@
 				        			<td>
 				        				<div class="btn-group btn-group-xs">
 				        					<a href="<?php echo $this->createUrl('clientes/'.$client->id) ?>" data-toggle="tooltip" title="Ver" class="btn btn-primary"><i class="fa fa-external-link"></i></a>
+				        					<a href="<?php echo $this->createUrl('clientes/reset_password/'.$client->id) ?>" data-toggle="tooltip" title="Reset password" class="btn btn-primary link__confirm" data-cofirm__text="Se generara una nueva contraseña para el cliente <?php echo $user->nombres; ?>. Desea continuar con el proceso?" data-confirm__class="link__reset__pass"><i class="fa fa-refresh"></i></a>
 											<a href="<?php echo $this->createUrl('clientes/update/'.$client->id); ?>" data-toggle="tooltip" title="Editar" class="btn btn-primary"><i class="fa fa-edit"></i></a>
 											<a href="<?php echo $this->createUrl('clientes/delete_client/'.$client->id); ?>" data-toggle="tooltip" title="Eliminar" class="btn btn-primary link__confirm" data-cofirm__text="El cliente <?php echo $user->nombres; ?> sera eliminado del sistema, una vez realizado el proceso no podra revertir los cambios. Desea continuar con el proceso?" data-confirm__class="link__item-table__delete"><i class="fa fa-power-off"></i></a>
 				        				</div>

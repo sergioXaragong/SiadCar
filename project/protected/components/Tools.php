@@ -98,6 +98,7 @@ class Tools extends CApplicationComponent{
     }
     public static function parse_token(){
         $headers = getallheaders();
+
         if(!isset($headers['Authorization']))
             return null;
         $token = explode(' ', $headers['Authorization']);
